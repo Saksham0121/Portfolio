@@ -6,7 +6,7 @@ export default function Footer() {
       <div className={styles.divider} />
       <div className={styles.inner}>
         <span className={styles.copy}>
-          Built with <span className={styles.heart}>♥</span> by Saksham Kumar
+          Built with <span className={styles.heart}>♥</span> by Saksham Sahu
         </span>
         <span className={styles.mono}>2024 · All rights reserved</span>
       </div>
