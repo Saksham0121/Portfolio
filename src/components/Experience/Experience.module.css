@@ -1,0 +1,169 @@
+.section {
+  margin-bottom: 64px;
+  animation: fadeUp 0.6s ease 0.15s both;
+}
+
+.header { margin-bottom: 28px; }
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--blue-2);
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: -0.5px;
+}
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+
+.card {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 32px;
+}
+
+/* Rail */
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+.railDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.railLine {
+  width: 1px;
+  flex: 1;
+  margin-top: 6px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.1), transparent);
+}
+
+/* Card body */
+.cardBody {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 20px 24px;
+  transition: all 0.2s;
+}
+
+.cardBody:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.04);
+  transform: translateX(3px);
+}
+
+/* Card head */
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.roleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.role {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.typeBadge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.07);
+  color: var(--text-3);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.company {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.location {
+  font-size: 10.5px;
+  color: var(--text-3);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* Bullets */
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-2);
+}
+
+.bulletDot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 1px;
+  margin-top: 8px;
+  box-shadow: 0 0 6px var(--accent);
+}
+
+@media (max-width: 640px) {
+  .cardHead { flex-direction: column; }
+  .meta { align-items: flex-start; }
+}

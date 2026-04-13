@@ -1,0 +1,139 @@
+.section {
+  margin-bottom: 64px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+
+/* Header */
+.header { margin-bottom: 28px; }
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cyan);
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: -0.5px;
+}
+
+/* Two-col grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Cards */
+.barsCard,
+.stackCard {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.2s;
+}
+
+.barsCard:hover,
+.stackCard:hover {
+  border-color: rgba(99,102,241,0.25);
+}
+
+.cardLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-3);
+  margin-bottom: 18px;
+}
+
+/* Skill bars */
+.bars { display: flex; flex-direction: column; gap: 14px; }
+
+.skillRow {}
+
+.skillMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.skillName {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-1);
+  font-family: var(--font-mono);
+}
+
+.skillPct {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.track {
+  height: 4px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--color), color-mix(in srgb, var(--color), white 30%));
+  box-shadow: 0 0 8px var(--color);
+  transition: none;
+}
+
+.bar.animate {
+  transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: var(--target);
+}
+
+/* Tech stack */
+.stackGroups { display: flex; flex-direction: column; gap: 12px; }
+
+.stackGroup {}
+
+.stackCat {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+
+.stackTags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.stackTag {
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-2);
+  transition: all 0.15s;
+  cursor: default;
+}
+
+.stackTag:hover {
+  background: rgba(99,102,241,0.12);
+  border-color: rgba(99,102,241,0.35);
+  color: var(--text-1);
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}

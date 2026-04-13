@@ -1,0 +1,360 @@
+.hero {
+  position: relative;
+  padding: 48px 0 64px;
+  margin-bottom: 8px;
+  animation: fadeUp 0.6s ease both;
+}
+
+/* ── Grid overlay ── */
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ── Terminal bar ── */
+.termBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-bottom: 40px;
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.termDots {
+  display: flex;
+  gap: 5px;
+}
+
+.termDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.termPath {
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+}
+
+.termBranch {
+  color: var(--blue-2);
+}
+
+.termBadge {
+  margin-left: auto;
+  background: rgba(99,102,241,0.15);
+  color: var(--blue-2);
+  border: 1px solid rgba(99,102,241,0.3);
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ── Two-column body ── */
+.body {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  align-items: center;
+}
+
+/* ── Left ── */
+.left { display: flex; flex-direction: column; gap: 20px; }
+
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--green);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(16,185,129,0.8);
+  animation: pulse-glow 2s ease infinite;
+}
+
+.name {
+  font-size: clamp(36px, 5vw, 54px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  color: var(--text-1);
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-2);
+  min-height: 24px;
+}
+
+.typewriter { color: var(--cyan); }
+
+.cursor {
+  color: var(--blue-2);
+  animation: blink 1s step-end infinite;
+}
+
+.bio {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-2);
+  max-width: 480px;
+}
+
+/* ── Contact chips ── */
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.contactChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 11.5px;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.contactChip:hover {
+  background: var(--glass-hover);
+  border-color: rgba(99,102,241,0.4);
+  color: var(--text-1);
+}
+
+.chipIcon {
+  font-size: 13px !important;
+  color: var(--blue-2);
+}
+
+/* ── CTA Buttons ── */
+.ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: linear-gradient(135deg, var(--blue), #4f46e5);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.35);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(99,102,241,0.5);
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btnGhost:hover {
+  background: var(--glass);
+  border-color: rgba(99,102,241,0.4);
+  color: var(--text-1);
+}
+
+/* ── Right Card ── */
+.right {}
+
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 28px;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 24px 64px rgba(0,0,0,0.4);
+}
+
+/* Avatar */
+.avatarWrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.avatarRing {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(var(--blue) 0%, var(--cyan) 50%, var(--purple) 100%);
+  animation: gradient-shift 4s linear infinite;
+  background-size: 200% 200%;
+}
+
+.avatar {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #0d1424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -1px;
+  z-index: 1;
+  border: 3px solid #0d1424;
+}
+
+/* Education badge */
+.eduBadge {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.eduIcon {
+  color: var(--blue-2);
+  font-size: 18px !important;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.eduDegree {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-1);
+  line-height: 1.4;
+}
+
+.eduSchool {
+  font-size: 11px;
+  color: var(--text-2);
+  margin-top: 2px;
+}
+
+.eduGrade {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-top: 3px;
+}
+
+/* Stats */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.statItem {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.statItem:hover {
+  border-color: rgba(99,102,241,0.3);
+}
+
+.statValue {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #a5b4fc, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.statLabel {
+  display: block;
+  font-size: 10px;
+  color: var(--text-3);
+  font-weight: 500;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Course chips */
+.courseRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.courseChip {
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.2);
+  color: var(--blue-2);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .body { grid-template-columns: 1fr; }
+  .right { order: -1; }
+  .name { font-size: 36px; }
+}

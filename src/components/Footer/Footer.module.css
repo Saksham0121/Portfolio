@@ -1,0 +1,30 @@
+.footer {
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  margin-bottom: 24px;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.heart {
+  color: #ec4899;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-3);
+}
