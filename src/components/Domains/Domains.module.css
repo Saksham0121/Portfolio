@@ -1,0 +1,152 @@
+/* ═══════════════════════════════════════════════
+   Domains — Cyber Cards
+   ═══════════════════════════════════════════════ */
+
+.section {
+  padding: 120px 6vw 80px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-top: 14px;
+  color: var(--text-1);
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--text-3);
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 30px 28px;
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth);
+  cursor: default;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--card-color) 40%, transparent);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px color-mix(in srgb, var(--card-color) 8%, transparent);
+}
+
+/* Top accent border line */
+.cardTopLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover .cardTopLine { opacity: 1; }
+
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.card:hover .cardGlow { opacity: 1; }
+
+/* Icon */
+.iconWrap {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--icon-color) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--icon-color) 25%, transparent);
+  color: var(--icon-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover .iconWrap {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--icon-color) 30%, transparent);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.cardSubtitle {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0.85;
+}
+
+.cardDesc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-2);
+  margin-bottom: 20px;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardNum {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--card-color) 10%, transparent);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  transition: color 0.3s;
+}
+
+.card:hover .cardNum {
+  color: color-mix(in srgb, var(--card-color) 20%, transparent);
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 80px 5vw 60px; }
+  .grid { grid-template-columns: 1fr; gap: 16px; }
+  .title { font-size: 2rem; }
+}

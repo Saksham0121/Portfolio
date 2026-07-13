@@ -1,182 +1,183 @@
+/* ═══════════════════════════════════════════
+   Projects — 2-Column Grid
+   ═══════════════════════════════════════════ */
+
 .section {
-  margin-bottom: 64px;
-  animation: fadeUp 0.6s ease 0.2s both;
+  background: #000;
+  padding: 100px 6vw 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.header { margin-bottom: 28px; }
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--purple);
-  display: block;
-  margin-bottom: 6px;
-  letter-spacing: 0.04em;
+/* ── Header ── */
+.header {
+  margin-bottom: 64px;
 }
 
 .title {
-  font-size: 26px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 800;
-  color: var(--text-1);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1;
 }
 
-/* Grid */
+.subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 12px;
+}
+
+/* ── Grid ── */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Card */
+/* ── Card ── */
 .card {
   position: relative;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 14px;
-  padding: 20px;
-  overflow: hidden;
-  cursor: default;
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  background: #000;
+  padding: 40px 36px;
+  text-decoration: none;
+  color: inherit;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
+  overflow: hidden;
+  transition: background 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(var(--color-rgb, 99,102,241), 0.4);
-  border-color: color-mix(in srgb, var(--color) 40%, transparent);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  background: #0a0a0a;
 }
 
-/* Glow */
-.glow {
+/* Arrow indicator — top right */
+.arrow {
   position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--color), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
+  top: 28px;
+  right: 28px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.15);
+  transition: color 0.2s, transform 0.2s;
+  line-height: 1;
 }
 
-.card:hover .glow {
-  opacity: 0.12;
+.card:hover .arrow {
+  color: rgba(255, 255, 255, 0.7);
+  transform: translate(3px, -3px);
 }
 
 /* Top row */
 .cardTop {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
-.emoji {
-  font-size: 22px;
-}
-
-.cardLinks {
-  display: flex;
-  gap: 6px;
-}
-
-.linkBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: var(--text-3);
-  text-decoration: none;
-  transition: all 0.15s;
-}
-
-.linkBtn:hover {
-  background: rgba(255,255,255,0.1);
-  color: var(--text-1);
-}
-
-/* Text */
-.tagline {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--color);
-  text-transform: uppercase;
+.num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
   letter-spacing: 0.1em;
 }
 
-.name {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--text-1);
-  letter-spacing: -0.3px;
+.year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.08em;
 }
 
+/* Name */
+.name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.1;
+  transition: color 0.2s;
+}
+
+.card:hover .name {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cardSubtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 18px;
+}
+
+/* Description */
 .desc {
-  font-size: 12.5px;
-  line-height: 1.6;
-  color: var(--text-2);
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 24px;
   flex: 1;
 }
 
-/* Tags */
+/* Highlights */
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.highlight {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+}
+
+/* Tech tags */
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 4px;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.techTag {
+.tag {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: var(--text-3);
-  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
 }
 
-/* Footer */
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  margin-top: 4px;
+.tag::after {
+  content: '·';
+  margin-left: 6px;
+  color: rgba(255, 255, 255, 0.1);
 }
 
-.stars {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--text-2);
-  font-family: var(--font-mono);
+.tag:last-child::after {
+  display: none;
 }
 
-.metric {
-  font-size: 10.5px;
-  color: var(--text-3);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
+  .section { padding: 70px 5vw 70px; }
   .grid { grid-template-columns: 1fr; }
-}
-
-@media (min-width: 640px) and (max-width: 900px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
+  .card { padding: 30px 24px; }
 }

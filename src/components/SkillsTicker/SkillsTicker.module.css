@@ -1,0 +1,109 @@
+/* ═══════════════════════════════════════════
+   Skills Ticker — Dual Direction Marquee
+   ═══════════════════════════════════════════ */
+
+.section {
+  background: #000;
+  padding: 60px 0 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Section title ── */
+.title {
+  text-align: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 40px;
+  padding: 0 32px;
+}
+
+/* ── Each row ── */
+.row {
+  overflow: hidden;
+  padding: 18px 0;
+  position: relative;
+}
+
+/* Fade edges on both sides */
+.row::before,
+.row::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.row::before {
+  left: 0;
+  background: linear-gradient(to right, #000 0%, transparent 100%);
+  width: 250px;
+}
+
+.row::after {
+  right: 0;
+  background: linear-gradient(to left, #000 0%, transparent 100%);
+  width: 250px;
+}
+
+/* ── Scrolling track ── */
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  white-space: nowrap;
+}
+
+/* Top row — scrolls left */
+.trackLeft {
+  animation: scrollLeft 35s linear infinite;
+}
+
+/* Bottom row — scrolls right */
+.trackRight {
+  animation: scrollRight 35s linear infinite;
+}
+
+/* ── Skill item ── */
+.item {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 0 4px;
+  transition: color 0.2s;
+  cursor: default;
+}
+
+.item:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.dot {
+  margin: 0 20px;
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 18px;
+}
+
+/* ── Keyframes ── */
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}

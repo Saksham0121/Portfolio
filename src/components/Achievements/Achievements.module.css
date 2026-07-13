@@ -1,78 +1,107 @@
+/* ═══════════════════════════════════════════════
+   Achievements — Trophy Cards
+   ═══════════════════════════════════════════════ */
+
 .section {
-  margin-bottom: 64px;
-  animation: fadeUp 0.6s ease 0.25s both;
+  padding: 100px 6vw 80px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-.header { margin-bottom: 28px; }
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--pink);
-  display: block;
-  margin-bottom: 6px;
-  letter-spacing: 0.04em;
+.header {
+  margin-bottom: 56px;
 }
 
 .title {
-  font-size: 26px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-top: 14px;
   color: var(--text-1);
-  letter-spacing: -0.5px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 20px;
 }
 
 .card {
   display: flex;
-  gap: 14px;
+  gap: 18px;
   align-items: flex-start;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 12px;
-  padding: 16px 18px;
-  transition: all 0.2s;
+  padding: 26px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth);
 }
 
 .card:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: color-mix(in srgb, var(--color) 35%, transparent);
-  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--card-color) 30%, transparent);
+  box-shadow:
+    0 16px 50px rgba(0, 0, 0, 0.4),
+    0 0 25px color-mix(in srgb, var(--card-color) 8%, transparent);
+  transform: translateY(-4px);
 }
 
 .iconWrap {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--color) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color) 25%, transparent);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: box-shadow 0.3s;
 }
 
-.icon {
-  font-size: 18px !important;
+.card:hover .iconWrap {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--card-color) 30%, transparent);
 }
 
-.title2 {
-  font-size: 13px;
+.cardContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-1);
-  margin-bottom: 3px;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
 }
 
-.detail {
-  font-size: 12px;
+.year {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cardDetail {
+  font-size: 13px;
+  line-height: 1.7;
   color: var(--text-2);
-  line-height: 1.5;
 }
 
-@media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+  .section { padding: 80px 5vw 60px; }
+  .title { font-size: 2rem; }
+  .grid { grid-template-columns: 1fr; gap: 14px; }
 }

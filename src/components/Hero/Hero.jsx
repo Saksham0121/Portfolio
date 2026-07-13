@@ -1,136 +1,76 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import photo from '../../assets/Photonobg.png';
 import styles from './Hero.module.css';
-import { profile, education } from '../../data/resumeData';
-
-function TypeWriter({ words }) {
-  const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    const word = words[index % words.length];
-    if (!deleting && subIndex === word.length + 1) {
-      setTimeout(() => setDeleting(true), 1800);
-      return;
-    }
-    if (deleting && subIndex === 0) {
-      setDeleting(false);
-      setIndex((i) => (i + 1) % words.length);
-      return;
-    }
-    const timeout = setTimeout(() => {
-      setText(word.substring(0, subIndex));
-      setSubIndex((s) => s + (deleting ? -1 : 1));
-    }, deleting ? 50 : 90);
-    return () => clearTimeout(timeout);
-  }, [subIndex, deleting, index, words]);
-
-  return (
-    <span className={styles.typewriter}>
-      {text}
-      <span className={styles.cursor}>|</span>
-    </span>
-  );
-}
 
 export default function Hero() {
-  return (
-    <section className={styles.hero}>
-      {/* Grid lines overlay */}
-      <div className={styles.grid} aria-hidden="true" />
+  const fillRef = useRef(null);
+  const photoRef = useRef(null);
+  const strokeRef = useRef(null);
 
-      {/* Top bar — like a terminal header */}
-      <div className={styles.termBar}>
-        <div className={styles.termDots}>
-          <span style={{ background: '#ef4444' }} />
-          <span style={{ background: '#f59e0b' }} />
-          <span style={{ background: '#22c55e' }} />
-        </div>
-        <span className={styles.termPath}>
-          ~/saksham-sahu <span className={styles.termBranch}>git:(main)</span> ✦
-        </span>
-        <span className={styles.termBadge}>v2.4.1</span>
+  useEffect(() => {
+    // Step 1: Text slides in
+    const fill = fillRef.current;
+    const stroke = strokeRef.current;
+    const img = photoRef.current;
+
+    if (!fill || !stroke || !img) return;
+
+    // Initial state
+    fill.style.opacity = '0';
+    fill.style.transform = 'translateY(60px)';
+    stroke.style.opacity = '0';
+    stroke.style.transform = 'translateY(60px)';
+    img.style.opacity = '0';
+    img.style.transform = 'translateY(40px) scale(0.97)';
+
+    // Animate text first
+    const t1 = setTimeout(() => {
+      fill.style.transition = 'opacity 0.9s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1)';
+      stroke.style.transition = 'opacity 0.9s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1)';
+      fill.style.opacity = '1';
+      fill.style.transform = 'translateY(0)';
+      stroke.style.opacity = '1';
+      stroke.style.transform = 'translateY(0)';
+    }, 200);
+
+    // Then photo comes in
+    const t2 = setTimeout(() => {
+      img.style.transition = 'opacity 1s ease, transform 1s cubic-bezier(0.16,1,0.3,1)';
+      img.style.opacity = '1';
+      img.style.transform = 'translateY(0) scale(1)';
+    }, 900);
+
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, []);
+
+  return (
+    <section className={styles.hero} id="hero">
+      {/* ── Top-left name label ── */}
+      <div className={styles.nameLabel}>SAKSHAM SAHU</div>
+
+      {/* ── Bottom-left roles ── */}
+      <div className={styles.roles}>
+        <span>SOFTWARE DEVELOPER</span>
+        <span>GENERATIVE AI</span>
+        <span>MACHINE LEARNING</span>
+        <span>DATA ANALYST</span>
       </div>
 
-      <div className={styles.body}>
-        {/* Left column */}
-        <div className={styles.left}>
-          <p className={styles.greeting}>
-            <span className={styles.dot} /> Available for opportunities
-          </p>
+      {/* ── Layer 1: Filled white text (bottom) ── */}
+      <div ref={fillRef} className={`${styles.textLayer} ${styles.textFill}`} aria-hidden="true">
+        <span className={styles.line1}>SAKSHAM</span>
+        <span className={styles.line2}>SAHU</span>
+      </div>
 
-          <h1 className={styles.name}>
-            <span>Saksham</span>
-            <span className="grad-text"> Sahu</span>
-          </h1>
+      {/* ── Layer 2: Photo (middle) ── */}
+      <div className={styles.photoLayer}>
+        <img ref={photoRef} src={photo} alt="Saksham Sahu" className={styles.photo} />
+      </div>
 
-          <p className={styles.role}>
-            <TypeWriter words={profile.roles} />
-          </p>
-
-          <p className={styles.bio}>{profile.bio}</p>
-
-          {/* Contact chips */}
-          <div className={styles.contacts}>
-            {profile.contact.map((c) => (
-              <a key={c.label} href={c.href} className={styles.contactChip}>
-                <span className={`material-symbols-outlined ${styles.chipIcon}`}>{c.icon}</span>
-                <span>{c.label}</span>
-              </a>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className={styles.ctas}>
-            <a href="#" className={styles.btnPrimary}>
-              <span className={`material-symbols-outlined`}>download</span>
-              Download CV
-            </a>
-            <a href="#projects" className={styles.btnGhost}>
-              View Projects
-              <span className={`material-symbols-outlined`}>arrow_forward</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Right column — identity card */}
-        <div className={styles.right}>
-          <div className={styles.card}>
-            {/* Avatar */}
-            <div className={styles.avatarWrap}>
-              <div className={styles.avatarRing} />
-              <div className={styles.avatar}>{profile.initials}</div>
-            </div>
-
-            {/* Education badge */}
-            <div className={styles.eduBadge}>
-              <span className={`material-symbols-outlined ${styles.eduIcon}`}>school</span>
-              <div>
-                <p className={styles.eduDegree}>{education.degree}</p>
-                <p className={styles.eduSchool}>{education.school} · {education.year}</p>
-                <p className={styles.eduGrade}>{education.grade}</p>
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className={styles.statsGrid}>
-              {profile.stats.map((s) => (
-                <div key={s.label} className={styles.statItem}>
-                  <span className={styles.statValue}>{s.value}</span>
-                  <span className={styles.statLabel}>{s.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Courses chip row */}
-            <div className={styles.courseRow}>
-              {education.courses.map((c) => (
-                <span key={c} className={styles.courseChip}>{c}</span>
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* ── Layer 3: Stroke-only text (top — always visible) ── */}
+      <div ref={strokeRef} className={`${styles.textLayer} ${styles.textStroke}`} aria-label="SAKSHAM SAHU">
+        <span className={styles.line1}>SAKSHAM</span>
+        <span className={styles.line2}>SAHU</span>
       </div>
     </section>
   );

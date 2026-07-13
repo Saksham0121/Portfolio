@@ -1,169 +1,208 @@
+/* ═══════════════════════════════════════════════
+   Experience — Cyber Timeline
+   ═══════════════════════════════════════════════ */
+
 .section {
-  margin-bottom: 64px;
-  animation: fadeUp 0.6s ease 0.15s both;
+  padding: 100px 6vw 80px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-.header { margin-bottom: 28px; }
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--blue-2);
-  display: block;
-  margin-bottom: 6px;
-  letter-spacing: 0.04em;
+.header {
+  margin-bottom: 56px;
 }
 
 .title {
-  font-size: 26px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-top: 14px;
   color: var(--text-1);
-  letter-spacing: -0.5px;
 }
 
-/* Timeline */
-.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 900px;
+}
 
 .card {
   display: flex;
-  gap: 20px;
-  padding-bottom: 32px;
+  gap: 28px;
+  position: relative;
 }
 
-/* Rail */
+/* ── Rail ── */
 .rail {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 28px;
   flex-shrink: 0;
-  padding-top: 4px;
+  padding-top: 10px;
 }
 
 .railDot {
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
   flex-shrink: 0;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  border: 2px solid rgba(0, 0, 0, 0.5);
 }
 
 .railLine {
   width: 1px;
   flex: 1;
-  margin-top: 6px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.1), transparent);
+  background: linear-gradient(to bottom, rgba(0, 245, 255, 0.15), transparent);
+  margin-top: 10px;
+  min-height: 60px;
 }
 
-/* Card body */
+/* ── Card Body ── */
 .cardBody {
   flex: 1;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 14px;
-  padding: 20px 24px;
-  transition: all 0.2s;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 30px;
+  margin-bottom: 32px;
+  transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.cardBody::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--card-accent, var(--neon-cyan));
+  border-radius: 16px 0 0 16px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }
 
 .cardBody:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.12);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.04);
-  transform: translateX(3px);
+  border-color: rgba(0, 245, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 245, 255, 0.05);
 }
 
-/* Card head */
+.cardBody:hover::before { opacity: 1; }
+
 .cardHead {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
-  gap: 12px;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
 }
 
 .roleRow {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .role {
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: 19px;
   font-weight: 700;
   color: var(--text-1);
+  letter-spacing: -0.02em;
 }
 
-.typeBadge {
-  font-size: 9px;
+.badge {
+  font-size: 10px;
   font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 2px 7px;
+  padding: 3px 10px;
   border-radius: 4px;
-  background: rgba(255,255,255,0.07);
-  color: var(--text-3);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid;
+  font-family: var(--font-mono);
 }
 
 .company {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
+  margin-top: 4px;
+  letter-spacing: -0.01em;
 }
 
 .meta {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 3px;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
 }
 
-.period {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 600;
-  color: var(--text-3);
+.period, .location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   white-space: nowrap;
 }
 
-.location {
-  font-size: 10.5px;
-  color: var(--text-3);
+/* ── Highlights ── */
+.highlights {
   display: flex;
-  align-items: center;
-  gap: 3px;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
-/* Bullets */
+.highlight {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 1px solid;
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+}
+
+/* ── Bullets ── */
 .bullets {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 10px;
 }
 
 .bullet {
   display: flex;
+  gap: 12px;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  line-height: 1.65;
+  font-size: 13.5px;
+  line-height: 1.75;
   color: var(--text-2);
 }
 
 .bulletDot {
-  flex-shrink: 0;
   width: 5px;
   height: 5px;
-  background: var(--accent);
-  border-radius: 1px;
-  margin-top: 8px;
-  box-shadow: 0 0 6px var(--accent);
+  border-radius: 50%;
+  margin-top: 9px;
+  flex-shrink: 0;
+  opacity: 0.8;
 }
 
-@media (max-width: 640px) {
-  .cardHead { flex-direction: column; }
-  .meta { align-items: flex-start; }
+@media (max-width: 768px) {
+  .section { padding: 80px 5vw 60px; }
+  .title { font-size: 2rem; }
+  .cardHead { flex-direction: column; gap: 10px; }
+  .meta { align-items: flex-start; flex-direction: row; gap: 16px; }
+  .card { gap: 18px; }
+  .cardBody { padding: 22px 20px; }
 }
