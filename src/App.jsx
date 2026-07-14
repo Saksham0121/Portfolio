@@ -1,6 +1,7 @@
 import Hero from './components/Hero/Hero';
 import SkillsTicker from './components/SkillsTicker/SkillsTicker';
 import Projects from './components/Projects/Projects';
+import Experience from './components/Experience/Experience';
 import styles from './App.module.css';
 
 export default function App() {
@@ -9,6 +10,7 @@ export default function App() {
       <Hero />
       <SkillsTicker />
       <Projects />
+      <Experience />
     </div>
   );
 }

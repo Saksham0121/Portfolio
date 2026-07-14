@@ -1,79 +1,92 @@
-import { motion } from 'framer-motion';
-import { MapPin, Calendar, ArrowUpRight } from 'lucide-react';
+import drdoLogo from '../../assets/DRDO_logo.png';
+import imarticusLogo from '../../assets/imarticus_logo.png';
+import bennettLogo from '../../assets/Bennett_logo.webp';
 import styles from './Experience.module.css';
-import { experience } from '../../data/resumeData';
+
+const experiences = [
+  {
+    company: 'DRDO, Ministry of Defence',
+    role: 'Artificial Intelligence Intern',
+    period: 'May 2026 – Present',
+    location: 'Delhi / NCR, India',
+    logo: drdoLogo,
+    points: [
+      'Engineered secure, locally hosted Advanced RAG systems using LLMs, vector databases and embedding models, achieved 92.5% retrieval accuracy on confidential knowledge base benchmarks while reducing query latency by ~40%',
+      'Developed Hybrid and Hierarchical RAG architectures with semantic search, keyword retrieval and reranking to improve retrieval',
+      'Built scalable document processing pipelines handling 11,000+ pages including chunking, embedding generation, indexing and reduced hallucinations through multistage retrieval',
+    ],
+    tags: ['Advanced RAG', 'LLMs', 'Vector DBs', 'Python', 'FastAPI', 'Semantic Search'],
+  },
+  {
+    company: 'Imarticus Learning',
+    role: 'Data Analyst Intern',
+    period: 'Jun 2025 – Jul 2025',
+    location: 'India',
+    logo: imarticusLogo,
+    points: [
+      'Led a team of 5 analysts to develop interactive dashboards delivering key business insights to stakeholders',
+      'Analyzed 50,000+ row business datasets using MySQL, Python and Power BI to extract actionable insights',
+      'Visualized insights using Matplotlib and Seaborn for weekly stakeholder reports',
+    ],
+    tags: ['Data Analysis', 'Power BI', 'MySQL', 'Python', 'Matplotlib', 'Seaborn'],
+  },
+  {
+    company: 'Bennett University (IQAC)',
+    role: 'IQAC Intern',
+    period: 'Sep 2023 – Nov 2023 · 3 mos',
+    location: 'Noida, Uttar Pradesh, India · On-site',
+    logo: bennettLogo,
+    points: [
+      'Developed 4 interactive Power BI dashboards to track academic quality metrics, reducing data analysis time for the administration by 20 percent.',
+      'Contributed to data audit frameworks used in internal evaluations presented to the University\'s top administration.',
+    ],
+    tags: ['Power BI', 'Data Audit', 'Dashboards', 'Analytics'],
+  },
+];
 
 export default function Experience() {
   return (
-    <section className={`${styles.section} section`} id="experience">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className={styles.header}
-      >
-        <span className="section-label">experience</span>
-        <h2 className={styles.title}>Where I've Worked</h2>
-      </motion.div>
+    <section className={styles.section} id="experience">
+      <div className={styles.header}>
+        <h2 className={styles.title}>EXPERIENCE</h2>
+        <p className={styles.subtitle}>Where I've worked & trained</p>
+      </div>
 
       <div className={styles.timeline}>
-        {experience.map((job, i) => (
-          <motion.article
-            key={job.company}
-            className={styles.card}
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className={styles.rail}>
-              <div className={styles.railDot} style={{ background: job.color, boxShadow: `0 0 12px ${job.color}60` }} />
-              {i < experience.length - 1 && <div className={styles.railLine} />}
-            </div>
-
-            <div className={styles.cardBody} style={{ '--card-accent': job.color }}>
-              <div className={styles.cardHead}>
+        {experiences.map((exp, index) => (
+          <div key={index} className={styles.card}>
+            <div className={styles.cardHeader}>
+              <div className={styles.companyInfo}>
+                <div className={styles.logoWrapper}>
+                  <img src={exp.logo} alt={exp.company} className={styles.logo} />
+                </div>
                 <div>
-                  <div className={styles.roleRow}>
-                    <h3 className={styles.role}>{job.role}</h3>
-                    <span className={styles.badge} style={{ color: job.color, borderColor: `${job.color}30`, background: `${job.color}10` }}>
-                      {job.type}
-                    </span>
-                  </div>
-                  <p className={styles.company} style={{ color: job.color }}>{job.company}</p>
-                </div>
-                <div className={styles.meta}>
-                  <span className={styles.period}>
-                    <Calendar size={12} />
-                    {job.period}
-                  </span>
-                  <span className={styles.location}>
-                    <MapPin size={12} />
-                    {job.location}
-                  </span>
+                  <h3 className={styles.company}>{exp.company}</h3>
+                  <p className={styles.role}>{exp.role}</p>
                 </div>
               </div>
-
-              {/* Highlights */}
-              <div className={styles.highlights}>
-                {job.highlights.map((h) => (
-                  <span key={h} className={styles.highlight} style={{ background: `${job.color}10`, borderColor: `${job.color}20`, color: job.color }}>
-                    {h}
-                  </span>
-                ))}
+              <div className={styles.metaInfo}>
+                <span className={styles.period}>{exp.period}</span>
+                {exp.location && <span className={styles.location}>{exp.location}</span>}
               </div>
-
-              <ul className={styles.bullets}>
-                {job.bullets.map((b, j) => (
-                  <li key={j} className={styles.bullet}>
-                    <span className={styles.bulletDot} style={{ background: job.color }} />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
-          </motion.article>
+
+            <ul className={styles.bulletList}>
+              {exp.points.map((pt, pIdx) => (
+                <li key={pIdx} className={styles.bulletItem}>
+                  {pt}
+                </li>
+              ))}
+            </ul>
+
+            <div className={styles.tags}>
+              {exp.tags.map((t) => (
+                <span key={t} className={styles.tag}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>

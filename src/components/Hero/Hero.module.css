@@ -71,6 +71,11 @@
   user-select: none;
 }
 
+.lineWrap {
+  overflow: hidden;
+  display: block;
+}
+
 /* ── Filled white text — bottom layer ── */
 .textFill {
   z-index: 1;

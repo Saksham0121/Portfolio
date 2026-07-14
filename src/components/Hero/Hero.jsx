@@ -3,44 +3,69 @@ import photo from '../../assets/Photonobg.png';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-  const fillRef = useRef(null);
+  const line2FillRef = useRef(null);
+  const line1FillRef = useRef(null);
+  const line2StrokeRef = useRef(null);
+  const line1StrokeRef = useRef(null);
   const photoRef = useRef(null);
-  const strokeRef = useRef(null);
 
   useEffect(() => {
-    // Step 1: Text slides in
-    const fill = fillRef.current;
-    const stroke = strokeRef.current;
+    const l2Fill = line2FillRef.current;
+    const l1Fill = line1FillRef.current;
+    const l2Stroke = line2StrokeRef.current;
+    const l1Stroke = line1StrokeRef.current;
     const img = photoRef.current;
 
-    if (!fill || !stroke || !img) return;
+    if (!l2Fill || !l1Fill || !l2Stroke || !l1Stroke || !img) return;
 
-    // Initial state
-    fill.style.opacity = '0';
-    fill.style.transform = 'translateY(60px)';
-    stroke.style.opacity = '0';
-    stroke.style.transform = 'translateY(60px)';
+    // Reset initial states
+    const resetLine = (el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(100%)';
+    };
+
+    resetLine(l2Fill);
+    resetLine(l2Stroke);
+    resetLine(l1Fill);
+    resetLine(l1Stroke);
+
     img.style.opacity = '0';
-    img.style.transform = 'translateY(40px) scale(0.97)';
+    img.style.transform = 'translateY(80px) scale(0.95)';
 
-    // Animate text first
+    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
+    // Step 1: Bottom line "SAHU" builds up from bottom first
     const t1 = setTimeout(() => {
-      fill.style.transition = 'opacity 0.9s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1)';
-      stroke.style.transition = 'opacity 0.9s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1)';
-      fill.style.opacity = '1';
-      fill.style.transform = 'translateY(0)';
-      stroke.style.opacity = '1';
-      stroke.style.transform = 'translateY(0)';
+      l2Fill.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
+      l2Stroke.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
+      l2Fill.style.opacity = '1';
+      l2Stroke.style.opacity = '1';
+      l2Fill.style.transform = 'translateY(0)';
+      l2Stroke.style.transform = 'translateY(0)';
     }, 200);
 
-    // Then photo comes in
+    // Step 2: Top line "SAKSHAM" builds up from bottom second
     const t2 = setTimeout(() => {
-      img.style.transition = 'opacity 1s ease, transform 1s cubic-bezier(0.16,1,0.3,1)';
+      l1Fill.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
+      l1Stroke.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
+      l1Fill.style.opacity = '1';
+      l1Stroke.style.opacity = '1';
+      l1Fill.style.transform = 'translateY(0)';
+      l1Stroke.style.transform = 'translateY(0)';
+    }, 550);
+
+    // Step 3: Photo rises up from bottom
+    const t3 = setTimeout(() => {
+      img.style.transition = `opacity 1.1s ${ease}, transform 1.1s ${ease}`;
       img.style.opacity = '1';
       img.style.transform = 'translateY(0) scale(1)';
-    }, 900);
+    }, 1000);
 
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
   }, []);
 
   return (
@@ -57,9 +82,13 @@ export default function Hero() {
       </div>
 
       {/* ── Layer 1: Filled white text (bottom) ── */}
-      <div ref={fillRef} className={`${styles.textLayer} ${styles.textFill}`} aria-hidden="true">
-        <span className={styles.line1}>SAKSHAM</span>
-        <span className={styles.line2}>SAHU</span>
+      <div className={`${styles.textLayer} ${styles.textFill}`} aria-hidden="true">
+        <div className={styles.lineWrap}>
+          <span ref={line1FillRef} className={styles.line1}>SAKSHAM</span>
+        </div>
+        <div className={styles.lineWrap}>
+          <span ref={line2FillRef} className={styles.line2}>SAHU</span>
+        </div>
       </div>
 
       {/* ── Layer 2: Photo (middle) ── */}
@@ -68,9 +97,13 @@ export default function Hero() {
       </div>
 
       {/* ── Layer 3: Stroke-only text (top — always visible) ── */}
-      <div ref={strokeRef} className={`${styles.textLayer} ${styles.textStroke}`} aria-label="SAKSHAM SAHU">
-        <span className={styles.line1}>SAKSHAM</span>
-        <span className={styles.line2}>SAHU</span>
+      <div className={`${styles.textLayer} ${styles.textStroke}`} aria-label="SAKSHAM SAHU">
+        <div className={styles.lineWrap}>
+          <span ref={line1StrokeRef} className={styles.line1}>SAKSHAM</span>
+        </div>
+        <div className={styles.lineWrap}>
+          <span ref={line2StrokeRef} className={styles.line2}>SAHU</span>
+        </div>
       </div>
     </section>
   );

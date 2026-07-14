@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styles from './SkillsTicker.module.css';
 
 const row1 = [
@@ -13,7 +14,6 @@ const row2 = [
 ];
 
 function TickerRow({ items, direction = 'left' }) {
-  // Duplicate for seamless loop
   const doubled = [...items, ...items];
   return (
     <div className={styles.row}>
@@ -31,10 +31,17 @@ function TickerRow({ items, direction = 'left' }) {
 
 export default function SkillsTicker() {
   return (
-    <section className={styles.section} id="skills-ticker">
+    <motion.section
+      className={styles.section}
+      id="skills-ticker"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    >
       <p className={styles.title}>Skills I Practice</p>
       <TickerRow items={row1} direction="left" />
       <TickerRow items={row2} direction="right" />
-    </section>
+    </motion.section>
   );
 }
