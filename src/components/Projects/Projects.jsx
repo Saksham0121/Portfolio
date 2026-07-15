@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styles from './Projects.module.css';
 
 const projects = [
@@ -46,19 +47,29 @@ const projects = [
 export default function Projects() {
   return (
     <section className={styles.section} id="projects">
-      <div className={styles.header}>
+      <motion.div
+        className={styles.header}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      >
         <h2 className={styles.title}>MY PROJECTS</h2>
         <p className={styles.subtitle}>Things I've built</p>
-      </div>
+      </motion.div>
 
       <div className={styles.grid}>
-        {projects.map((p) => (
-          <a
+        {projects.map((p, i) => (
+          <motion.a
             key={p.number}
             href={p.link}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.card}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className={styles.cardTop}>
               <span className={styles.num}>{p.number}</span>
@@ -82,7 +93,7 @@ export default function Projects() {
             </div>
 
             <div className={styles.arrow}>↗</div>
-          </a>
+          </motion.a>
         ))}
       </div>
     </section>

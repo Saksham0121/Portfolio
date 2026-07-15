@@ -70,8 +70,6 @@ export default function Hero() {
 
   return (
     <section className={styles.hero} id="hero">
-      {/* ── Top-left name label ── */}
-      <div className={styles.nameLabel}>SAKSHAM SAHU</div>
 
       {/* ── Bottom-left roles ── */}
       <div className={styles.roles}>

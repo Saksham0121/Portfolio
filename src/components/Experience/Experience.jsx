@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import drdoLogo from '../../assets/DRDO_logo.png';
 import imarticusLogo from '../../assets/imarticus_logo.png';
 import bennettLogo from '../../assets/Bennett_logo.webp';
@@ -6,7 +7,7 @@ import styles from './Experience.module.css';
 const experiences = [
   {
     company: 'DRDO, Ministry of Defence',
-    role: 'Artificial Intelligence Intern',
+    role: 'Generative AI Intern',
     period: 'May 2026 – Present',
     location: 'Delhi / NCR, India',
     logo: drdoLogo,
@@ -14,6 +15,7 @@ const experiences = [
       'Engineered secure, locally hosted Advanced RAG systems using LLMs, vector databases and embedding models, achieved 92.5% retrieval accuracy on confidential knowledge base benchmarks while reducing query latency by ~40%',
       'Developed Hybrid and Hierarchical RAG architectures with semantic search, keyword retrieval and reranking to improve retrieval',
       'Built scalable document processing pipelines handling 11,000+ pages including chunking, embedding generation, indexing and reduced hallucinations through multistage retrieval',
+      'Currently being used by DRDO centers nationwide',
     ],
     tags: ['Advanced RAG', 'LLMs', 'Vector DBs', 'Python', 'FastAPI', 'Semantic Search'],
   },
@@ -47,14 +49,27 @@ const experiences = [
 export default function Experience() {
   return (
     <section className={styles.section} id="experience">
-      <div className={styles.header}>
+      <motion.div
+        className={styles.header}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      >
         <h2 className={styles.title}>EXPERIENCE</h2>
         <p className={styles.subtitle}>Where I've worked & trained</p>
-      </div>
+      </motion.div>
 
       <div className={styles.timeline}>
         {experiences.map((exp, index) => (
-          <div key={index} className={styles.card}>
+          <motion.div
+            key={index}
+            className={styles.card}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
             <div className={styles.cardHeader}>
               <div className={styles.companyInfo}>
                 <div className={styles.logoWrapper}>
@@ -86,7 +101,7 @@ export default function Experience() {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

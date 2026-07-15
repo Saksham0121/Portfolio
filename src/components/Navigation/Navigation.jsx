@@ -1,104 +1,137 @@
-import { useEffect, useState } from 'react';
-import { Menu, X, Terminal } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Navigation.module.css';
 
-const navLinks = [
-  { label: 'About', href: '#about', num: '01' },
-  { label: 'Experience', href: '#experience', num: '02' },
-  { label: 'Skills', href: '#skills', num: '03' },
-  { label: 'Projects', href: '#projects', num: '04' },
-  { label: 'Achievements', href: '#achievements', num: '05' },
-  { label: 'Contact', href: '#contact', num: '06' },
+const navItems = [
+  { id: 'skills-ticker', label: 'SKILLS', num: '01' },
+  { id: 'projects', label: 'PROJECTS', num: '02' },
+  { id: 'experience', label: 'EXPERIENCE', num: '03' },
+  { id: 'about', label: 'ABOUT', num: '04' },
 ];
 
 export default function Navigation() {
+  const [activeSection, setActiveSection] = useState('');
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 60);
-      // Active section detection
-      const sections = navLinks.map(l => document.querySelector(l.href));
-      const active = sections.find(sec => {
-        if (!sec) return false;
-        const rect = sec.getBoundingClientRect();
-        return rect.top <= 120 && rect.bottom >= 120;
-      });
-      if (active) setActiveSection(active.id);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Get sections with their DOM top position sorted by document position
+      const sectionElements = navItems
+        .map((item) => ({ id: item.id, el: document.getElementById(item.id) }))
+        .filter((item) => item.el !== null)
+        .map((item) => ({ id: item.id, top: item.el.offsetTop }))
+        .sort((a, b) => b.top - a.top); // Highest offsetTop first
+
+      const scrollPos = window.scrollY + 250;
+
+      for (const item of sectionElements) {
+        if (item.top <= scrollPos) {
+          setActiveSection(item.id);
+          return;
+        }
+      }
+
+      if (window.scrollY < 200) {
+        setActiveSection('');
+      }
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (href) => {
+  const scrollToSection = (id) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setActiveSection(id);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`} id="navigation">
-      <div className={styles.inner}>
-        {/* Logo */}
-        <a
-          href="#"
-          className={styles.logo}
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          id="nav-logo"
-          aria-label="Go to top"
-        >
-          <Terminal size={14} className={styles.logoIcon} />
-          <span className={styles.logoText}>
-            <span className={styles.logoCyan}>saksham</span>
-            <span className={styles.logoDim}>.dev</span>
-          </span>
+    <motion.header
+      className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div className={styles.navContainer}>
+        {/* Brand logo / name */}
+        <a href="#hero" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }} className={styles.brand}>
+          <span className={styles.brandDot}></span>
+          <span className={styles.brandText}>SAKSHAM SAHU</span>
         </a>
 
         {/* Desktop Links */}
-        <div className={styles.links}>
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={`${styles.link} ${activeSection === link.href.slice(1) ? styles.active : ''}`}
-              onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-              id={`nav-link-${link.label.toLowerCase()}`}
+        <nav className={styles.desktopNav}>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={`${styles.navLink} ${activeSection === item.id ? styles.active : ''}`}
             >
-              <span className={styles.linkNum}>{link.num}</span>
-              <span className={styles.linkLabel}>{link.label}</span>
-            </a>
+              <span className={styles.navNum}>{item.num}</span>
+              <span className={styles.navLabel}>{item.label}</span>
+              {activeSection === item.id && (
+                <motion.div
+                  className={styles.activeIndicator}
+                  layoutId="activeNavIndicator"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                />
+              )}
+            </button>
           ))}
-        </div>
+        </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className={styles.mobileToggle}
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-          id="nav-mobile-toggle"
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        {/* CTA button */}
+        <div className={styles.actions}>
+          <a
+            href="mailto:saksham01sahu@gmail.com"
+            className={styles.ctaBtn}
+          >
+            GET IN TOUCH
+          </a>
+
+          {/* Mobile hamburger */}
+          <button
+            className={styles.hamburger}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className={`${styles.bar} ${mobileOpen ? styles.barOpen1 : ''}`} />
+            <span className={`${styles.bar} ${mobileOpen ? styles.barOpen2 : ''}`} />
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className={styles.mobileMenu}>
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={styles.mobileLink}
-              onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-            >
-              <span className={styles.mobileLinkNum}>{link.num}</span>
-              {link.label}
-            </a>
-          ))}
-        </div>
-      )}
-    </nav>
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className={styles.mobileMenu}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`${styles.mobileLink} ${activeSection === item.id ? styles.activeMobile : ''}`}
+              >
+                <span className={styles.mobileNum}>{item.num}</span>
+                <span>{item.label}</span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }
