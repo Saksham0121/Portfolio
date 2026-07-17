@@ -6,7 +6,8 @@ const navItems = [
   { id: 'skills-ticker', label: 'SKILLS', num: '01' },
   { id: 'projects', label: 'PROJECTS', num: '02' },
   { id: 'experience', label: 'EXPERIENCE', num: '03' },
-  { id: 'about', label: 'ABOUT', num: '04' },
+  { id: 'tech-stack', label: 'TECH STACK', num: '04' },
+  { id: 'about', label: 'ABOUT', num: '05' },
 ];
 
 export default function Navigation() {
