@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   Experience — Editorial Dark Timeline
+   Experience & Education — Editorial Timeline
    ═══════════════════════════════════════════ */
 
 .section {
@@ -10,12 +10,20 @@
 
 /* ── Header ── */
 .header {
-  margin-bottom: 64px;
+  margin-bottom: 56px;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
 .title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: #fff;
@@ -31,6 +39,56 @@
   margin-top: 12px;
 }
 
+/* ── Toggle Tabs ── */
+.tabContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 5px;
+  border-radius: 100px;
+}
+
+.tabBtn {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+
+.tabBtn:hover {
+  color: #ffffff;
+}
+
+.tabBtn.activeTab {
+  color: #000000;
+}
+
+.tabIndicator {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  border-radius: 100px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
+
+.tabBtn span {
+  position: relative;
+  z-index: 1;
+}
+
+
 /* ── Timeline Container ── */
 .timeline {
   display: flex;
@@ -43,6 +101,7 @@
   position: relative;
   background: #080808;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
   padding: 36px 40px;
   display: flex;
   flex-direction: column;
@@ -111,7 +170,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 4px;
+  gap: 6px;
 }
 
 .period {
@@ -127,6 +186,18 @@
   font-size: 11px;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.04em;
+}
+
+.gradeBadge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #ffffff;
 }
 
 /* ── Bullet Points ── */
@@ -164,6 +235,7 @@
   padding: 4px 10px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
   color: rgba(255, 255, 255, 0.75);
   text-transform: uppercase;
 }
@@ -171,6 +243,10 @@
 @media (max-width: 768px) {
   .section {
     padding: 70px 5vw 70px;
+  }
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
   }
   .card {
     padding: 28px 20px;

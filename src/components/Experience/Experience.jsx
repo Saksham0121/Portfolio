@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import drdoLogo from '../../assets/DRDO_logo.png';
 import imarticusLogo from '../../assets/imarticus_logo.png';
 import bennettLogo from '../../assets/Bennett_logo.webp';
@@ -46,7 +47,26 @@ const experiences = [
   },
 ];
 
+const educationList = [
+  {
+    institution: 'Bennett University',
+    degree: 'Bachelor of Technology in Computer Science Engineering (B.Tech CSE)',
+    period: 'Aug 2023 – Jun 2027',
+    location: 'Noida, India',
+    logo: bennettLogo,
+    grade: 'CGPA: 8.72 / 10.0',
+    points: [
+      'Specializing in Artificial Intelligence, Machine Learning, and Software Engineering',
+      'National Winner at Innovate 2.0 Hackathon among 200+ competing teams',
+      'Core Coursework: Data Structures & Algorithms, Object-Oriented Programming (OOPs), Operating Systems, Database Management Systems (DBMS), Computer Networks, System Design',
+    ],
+    tags: ['B.Tech CSE', 'CGPA 8.72', 'AI & ML', 'DSA', 'DBMS', 'System Design'],
+  },
+];
+
 export default function Experience() {
+  const [activeTab, setActiveTab] = useState('work'); // 'work' | 'education'
+
   return (
     <section className={styles.section} id="experience">
       <motion.div
@@ -56,54 +76,138 @@ export default function Experience() {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h2 className={styles.title}>EXPERIENCE</h2>
-        <p className={styles.subtitle}>Where I've worked & trained</p>
+        <div className={styles.headerRow}>
+          <div>
+            <h2 className={styles.title}>EXPERIENCE & EDUCATION</h2>
+            <p className={styles.subtitle}>My Professional Journey & Academic Background</p>
+          </div>
+
+          {/* Toggle Tabs */}
+          <div className={styles.tabContainer}>
+            <button
+              onClick={() => setActiveTab('work')}
+              className={`${styles.tabBtn} ${activeTab === 'work' ? styles.activeTab : ''}`}
+            >
+              <span>WORK EXPERIENCE</span>
+              {activeTab === 'work' && (
+                <motion.div
+                  className={styles.tabIndicator}
+                  layoutId="expTabIndicator"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+            </button>
+            <button
+              onClick={() => setActiveTab('education')}
+              className={`${styles.tabBtn} ${activeTab === 'education' ? styles.activeTab : ''}`}
+            >
+              <span>EDUCATION</span>
+              {activeTab === 'education' && (
+                <motion.div
+                  className={styles.tabIndicator}
+                  layoutId="expTabIndicator"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+            </button>
+          </div>
+        </div>
       </motion.div>
 
-      <div className={styles.timeline}>
-        {experiences.map((exp, index) => (
+      {/* Tab Content */}
+      <AnimatePresence mode="wait">
+        {activeTab === 'work' ? (
           <motion.div
-            key={index}
-            className={styles.card}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+            key="work"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className={styles.timeline}
           >
-            <div className={styles.cardHeader}>
-              <div className={styles.companyInfo}>
-                <div className={styles.logoWrapper}>
-                  <img src={exp.logo} alt={exp.company} className={styles.logo} />
+            {experiences.map((exp, index) => (
+              <div key={index} className={styles.card}>
+                <div className={styles.cardHeader}>
+                  <div className={styles.companyInfo}>
+                    <div className={styles.logoWrapper}>
+                      <img src={exp.logo} alt={exp.company} className={styles.logo} />
+                    </div>
+                    <div>
+                      <h3 className={styles.company}>{exp.company}</h3>
+                      <p className={styles.role}>{exp.role}</p>
+                    </div>
+                  </div>
+                  <div className={styles.metaInfo}>
+                    <span className={styles.period}>{exp.period}</span>
+                    {exp.location && <span className={styles.location}>{exp.location}</span>}
+                  </div>
                 </div>
-                <div>
-                  <h3 className={styles.company}>{exp.company}</h3>
-                  <p className={styles.role}>{exp.role}</p>
+
+                <ul className={styles.bulletList}>
+                  {exp.points.map((pt, pIdx) => (
+                    <li key={pIdx} className={styles.bulletItem}>
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className={styles.tags}>
+                  {exp.tags.map((t) => (
+                    <span key={t} className={styles.tag}>
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <div className={styles.metaInfo}>
-                <span className={styles.period}>{exp.period}</span>
-                {exp.location && <span className={styles.location}>{exp.location}</span>}
-              </div>
-            </div>
-
-            <ul className={styles.bulletList}>
-              {exp.points.map((pt, pIdx) => (
-                <li key={pIdx} className={styles.bulletItem}>
-                  {pt}
-                </li>
-              ))}
-            </ul>
-
-            <div className={styles.tags}>
-              {exp.tags.map((t) => (
-                <span key={t} className={styles.tag}>
-                  {t}
-                </span>
-              ))}
-            </div>
+            ))}
           </motion.div>
-        ))}
-      </div>
+        ) : (
+          <motion.div
+            key="education"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className={styles.timeline}
+          >
+            {educationList.map((edu, index) => (
+              <div key={index} className={styles.card}>
+                <div className={styles.cardHeader}>
+                  <div className={styles.companyInfo}>
+                    <div className={styles.logoWrapper}>
+                      <img src={edu.logo} alt={edu.institution} className={styles.logo} />
+                    </div>
+                    <div>
+                      <h3 className={styles.company}>{edu.institution}</h3>
+                      <p className={styles.role}>{edu.degree}</p>
+                    </div>
+                  </div>
+                  <div className={styles.metaInfo}>
+                    <span className={styles.period}>{edu.period}</span>
+                    <span className={styles.gradeBadge}>{edu.grade}</span>
+                  </div>
+                </div>
+
+                <ul className={styles.bulletList}>
+                  {edu.points.map((pt, pIdx) => (
+                    <li key={pIdx} className={styles.bulletItem}>
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className={styles.tags}>
+                  {edu.tags.map((t) => (
+                    <span key={t} className={styles.tag}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

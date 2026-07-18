@@ -8,13 +8,13 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 20px 4vw;
+  padding: 20px 2.5vw;
   transition: padding 0.3s ease, background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
   pointer-events: none;
 }
 
 .header.scrolled {
-  padding: 14px 4vw;
+  padding: 14px 2.5vw;
   background: rgba(5, 5, 5, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -22,13 +22,15 @@
 }
 
 .navContainer {
-  max-width: 1320px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   pointer-events: auto;
 }
+
 
 /* ── Brand ── */
 .brand {

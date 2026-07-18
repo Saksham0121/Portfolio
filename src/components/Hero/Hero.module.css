@@ -27,36 +27,40 @@
   animation: fadeIn 1s ease 1.6s both;
 }
 
-/* ── Bottom-left roles ── */
-.roles {
+/* ── Bottom-left intro text ── */
+.introBlock {
   position: absolute;
-  bottom: 36px;
-  left: 32px;
+  bottom: 40px;
+  left: 36px;
   z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  max-width: 480px;
   animation: fadeIn 1s ease 1.8s both;
 }
 
-.roles span {
-  font-family: 'JetBrains Mono', 'Space Grotesk', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.7;
+.introHeadline {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(1.3rem, 2.3vw, 2.1rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
 }
 
-.roles span:first-child {
-  color: rgba(255, 255, 255, 0.85);
+.introSubheadline {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.55;
+  margin: 0;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
 
 /* ── Shared text layer ── */
 .textLayer {

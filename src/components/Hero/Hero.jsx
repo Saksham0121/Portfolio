@@ -71,13 +71,16 @@ export default function Hero() {
   return (
     <section className={styles.hero} id="hero">
 
-      {/* ── Bottom-left roles ── */}
-      <div className={styles.roles}>
-        <span>SOFTWARE DEVELOPER</span>
-        <span>GENERATIVE AI</span>
-        <span>MACHINE LEARNING</span>
-        <span>DATA ANALYST</span>
+      {/* ── Bottom-left intro text ── */}
+      <div className={styles.introBlock}>
+        <h3 className={styles.introHeadline}>
+          Quiet backend. Sharp retrieval. Real impact.
+        </h3>
+        <p className={styles.introSubheadline}>
+          B.Tech CSE Student | Software Engineer | Eager Learner who loves finding new ways to solve problems
+        </p>
       </div>
+
 
       {/* ── Layer 1: Filled white text (bottom) ── */}
       <div className={`${styles.textLayer} ${styles.textFill}`} aria-hidden="true">
