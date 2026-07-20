@@ -1,72 +1,247 @@
-/* ═══════════════════════════════════════════════
-   Footer — Minimal Cyber
-   ═══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   Footer & Socials — Concluding Section
+   ═══════════════════════════════════════════ */
 
 .footer {
-  padding: 0 6vw 40px;
   position: relative;
-  z-index: 2;
+  background: #000000;
+  padding: 110px 6vw 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
 }
 
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.15), rgba(168, 85, 247, 0.15), transparent);
-  margin-bottom: 28px;
+/* ── Background Glow ── */
+.backdropGlow {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  max-width: 1280px;
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
-.left {
+/* ── Header ── */
+.header {
+  margin-bottom: 60px;
+}
+
+.sectionLabel {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 14px;
+}
+
+.title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 580px;
+  line-height: 1.6;
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+/* ── Social Card ── */
+.socialCard {
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px 28px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  justify-content: space-between;
+  min-height: 160px;
+  text-decoration: none;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.name {
-  font-family: var(--font-display);
-  font-size: 14px;
+.socialCard:hover {
+  transform: translateY(-4px);
+  background: #0e0e0e;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowIcon {
+  color: rgba(255, 255, 255, 0.35);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.socialCard:hover .arrowIcon {
+  transform: translate(2px, -2px);
+  color: #ffffff;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 24px;
+}
+
+.socialName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: var(--text-1);
+  color: #ffffff;
+  letter-spacing: -0.02em;
 }
 
-.tagline {
-  font-family: var(--font-mono);
+.socialHandle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.04em;
+}
+
+/* ── Copy Email Banner ── */
+.copyBanner {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+.copyBannerLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.pinIcon {
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.copyBtn {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  color: var(--text-3);
-  letter-spacing: 0.02em;
-}
-
-.right {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-3);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
 }
 
-.copy {
-  font-size: 11px;
+.copyBtn:hover {
+  background: #e5e5e5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
 }
 
-.sep {
-  color: var(--text-muted);
+.checkIcon {
+  color: #10B981;
 }
 
-.year {
-  font-size: 11px;
-  color: var(--neon-cyan);
-  opacity: 0.6;
+/* ── Bottom Bar ── */
+.bottomBar {
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-@media (max-width: 480px) {
-  .inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.brandName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+}
+
+.copyright {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .copyBanner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
