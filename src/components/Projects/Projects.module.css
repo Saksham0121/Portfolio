@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════ */
 
 .section {
-  background: #000;
+  background: transparent;
   padding: 100px 6vw 100px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -43,7 +43,9 @@
 /* ── Card ── */
 .card {
   position: relative;
-  background: #000;
+  background: rgba(8, 8, 8, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 40px 36px;
   text-decoration: none;
   color: inherit;
@@ -55,8 +57,9 @@
 }
 
 .card:hover {
-  background: #0a0a0a;
+  background: rgba(14, 14, 14, 0.95);
 }
+
 
 /* Arrow indicator — top right */
 .arrow {

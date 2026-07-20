@@ -92,11 +92,15 @@ export default function Navigation() {
         {/* CTA button */}
         <div className={styles.actions}>
           <a
-            href="mailto:saksham01sahu@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=sakshamsahu77783@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.ctaBtn}
           >
             GET IN TOUCH
           </a>
+
+
 
           {/* Mobile hamburger */}
           <button

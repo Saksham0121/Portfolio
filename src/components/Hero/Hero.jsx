@@ -30,7 +30,7 @@ export default function Hero() {
     resetLine(l1Stroke);
 
     img.style.opacity = '0';
-    img.style.transform = 'translateY(80px) scale(0.95)';
+    img.style.transform = 'translateY(40px) scale(0.95)';
 
     const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
 
@@ -58,7 +58,7 @@ export default function Hero() {
     const t3 = setTimeout(() => {
       img.style.transition = `opacity 1.1s ${ease}, transform 1.1s ${ease}`;
       img.style.opacity = '1';
-      img.style.transform = 'translateY(0) scale(1)';
+      img.style.transform = 'translateY(-40px) scale(1)';
     }, 1000);
 
     return () => {

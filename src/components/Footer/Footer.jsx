@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, MapPin, ArrowUpRight, Check, Copy } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, ArrowUpRight, Check, Copy, TrendingUp, Cpu, Home, LineChart } from 'lucide-react';
 import styles from './Footer.module.css';
 
 const socials = [
   {
     name: 'LinkedIn',
-    handle: 'saksham-sahu',
-    url: 'https://www.linkedin.com/in/saksham-sahu-',
+    handle: 'sahusaksham10',
+    url: 'https://www.linkedin.com/in/sahusaksham10/',
     icon: Linkedin,
     color: '#0A66C2',
   },
@@ -20,11 +20,19 @@ const socials = [
   },
   {
     name: 'Email',
-    handle: 'saksham01sahu@gmail.com',
-    url: 'mailto:saksham01sahu@gmail.com',
+    handle: 'sakshamsahu77783@gmail.com',
+    url: 'https://mail.google.com/mail/?view=cm&fs=1&to=sakshamsahu77783@gmail.com',
     icon: Mail,
     color: '#EA4335',
   },
+
+];
+
+const interests = [
+  { name: 'Technology', icon: Cpu, tag: 'AI & FULL-STACK' },
+  { name: 'Finance', icon: TrendingUp, tag: 'INNOVATION & MARKETS' },
+  { name: 'Stock Market', icon: LineChart, tag: 'TRADING & ANALYTICS' },
+  { name: 'Real Estate', icon: Home, tag: 'PROPERTY & ASSETS' },
 ];
 
 export default function Footer() {
@@ -33,14 +41,14 @@ export default function Footer() {
 
   const handleCopyEmail = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('saksham01sahu@gmail.com');
+    navigator.clipboard.writeText('sakshamsahu77783@gmail.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
 
   return (
     <footer className={styles.footer} id="contact">
-      {/* Background glow & grid */}
+      {/* Background glow */}
       <div className={styles.backdropGlow} />
 
       <div className={styles.container}>
@@ -116,6 +124,31 @@ export default function Footer() {
               </>
             )}
           </button>
+        </motion.div>
+
+        {/* Interests & Passion Topics */}
+        <motion.div
+          className={styles.interestsSection}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h3 className={styles.interestsTitle}>DOMAINS OF INTEREST</h3>
+          <div className={styles.interestsGrid}>
+            {interests.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.name} className={styles.interestTile}>
+                  <Icon size={18} className={styles.interestIcon} />
+                  <div>
+                    <span className={styles.interestName}>{item.name}</span>
+                    <span className={styles.interestTag}>{item.tag}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </motion.div>
 
         {/* Bottom Bar */}

@@ -4,36 +4,43 @@
    RESET & BASE
    ═══════════════════════════════════════ */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 :root {
-  --bg:         #050505;
-  --bg-card:    #0d0d0d;
-  --border:     rgba(255,255,255,0.06);
+  --bg: #050505;
+  --bg-card: #0d0d0d;
+  --border: rgba(255, 255, 255, 0.06);
 
-  --text-1:     #f0f0f0;
-  --text-2:     #a0a0a0;
-  --text-3:     #555;
+  --text-1: #f0f0f0;
+  --text-2: #a0a0a0;
+  --text-3: #555;
 
-  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
-  --font-mono:    'JetBrains Mono', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: var(--font-sans);
-  background: var(--bg);
+  background: transparent;
   color: var(--text-1);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-#root { width: 100%; }
-
+#root {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}

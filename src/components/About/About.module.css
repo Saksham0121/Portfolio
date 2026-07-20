@@ -4,11 +4,12 @@
 
 .section {
   position: relative;
-  background: #000;
+  background: transparent;
   padding: 100px 6vw 100px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
 }
+
 
 /* ── Header ── */
 .header {
@@ -130,17 +131,83 @@
 }
 
 /* Positions randomly scattered around speaker image with organic tilts */
-.tag1  { top: 7%; left: 2%; transform: rotate(-3deg); }          /* Innovate2.0 Winner */
-.tag2  { top: 20%; left: -30px; transform: rotate(4deg); }        /* Software Developer */
-.tag3  { top: 35%; left: 18px; transform: rotate(-2deg); }        /* CS Undergraduate */
-.tag4  { top: 6%; right: 12%; transform: rotate(3deg); }          /* Gen AI Engineer */
-.tag5  { bottom: 5%; right: -10px; transform: rotate(-4deg); }     /* Faridabad, India */
-.tag6  { top: 19%; right: -28px; transform: rotate(-3deg); }       /* Data Structures */
-.tag7  { top: 48%; left: -38px; transform: rotate(2deg); }        /* Algorithms */
-.tag8  { top: 64%; left: 32px; transform: rotate(-5deg); }        /* C++ */
-.tag9  { top: 80%; left: -14px; transform: rotate(3deg); }        /* JAVA */
-.tag10 { top: 35%; right: -42px; transform: rotate(-2deg); }       /* Springboot */
-.tag11 { top: 54%; right: -14px; transform: rotate(4deg); }        /* MERN Stack */
+.tag1 {
+  top: 7%;
+  left: 2%;
+  transform: rotate(-3deg);
+}
+
+/* Innovate2.0 Winner */
+.tag2 {
+  top: 20%;
+  left: -30px;
+  transform: rotate(4deg);
+}
+
+/* Software Developer */
+.tag3 {
+  top: 35%;
+  left: 18px;
+  transform: rotate(-2deg);
+}
+
+/* CS Undergraduate */
+.tag4 {
+  top: 6%;
+  right: 12%;
+  transform: rotate(3deg);
+}
+
+/* Gen AI Engineer */
+.tag5 {
+  bottom: 5%;
+  right: -10px;
+  transform: rotate(-4deg);
+}
+
+/* Faridabad, India */
+.tag6 {
+  top: 19%;
+  right: -28px;
+  transform: rotate(-3deg);
+}
+
+/* Data Structures */
+.tag7 {
+  top: 48%;
+  left: -38px;
+  transform: rotate(2deg);
+}
+
+/* Algorithms */
+.tag8 {
+  top: 64%;
+  left: 32px;
+  transform: rotate(-5deg);
+}
+
+/* C++ */
+.tag9 {
+  top: 80%;
+  left: -14px;
+  transform: rotate(3deg);
+}
+
+/* JAVA */
+.tag10 {
+  top: 35%;
+  right: -42px;
+  transform: rotate(-2deg);
+}
+
+/* Springboot */
+.tag11 {
+  top: 54%;
+  right: -14px;
+  transform: rotate(4deg);
+}
+
+/* MERN Stack */
 
 
 
@@ -190,9 +257,17 @@
   border-radius: 50%;
 }
 
-.dotRed { background: #ff5f56; }
-.dotYellow { background: #ffbd2e; }
-.dotGreen { background: #27c93f; }
+.dotRed {
+  background: #ff5f56;
+}
+
+.dotYellow {
+  background: #ffbd2e;
+}
+
+.dotGreen {
+  background: #27c93f;
+}
 
 .docName {
   font-family: 'JetBrains Mono', monospace;
@@ -259,17 +334,50 @@
     font-size: 10px;
     padding: 6px 10px;
   }
-  .tag1  { left: 0; }
-  .tag2  { left: 0; }
-  .tag3  { left: 0; }
-  .tag4  { right: 0; }
-  .tag5  { right: 0; }
-  .tag6  { right: 0; }
-  .tag7  { left: 0; }
-  .tag8  { left: 0; }
-  .tag9  { left: 0; }
-  .tag10 { right: 0; }
-  .tag11 { right: 0; }
+
+  .tag1 {
+    left: 0;
+  }
+
+  .tag2 {
+    left: 0;
+  }
+
+  .tag3 {
+    left: 0;
+  }
+
+  .tag4 {
+    right: 0;
+  }
+
+  .tag5 {
+    right: 0;
+  }
+
+  .tag6 {
+    right: 0;
+  }
+
+  .tag7 {
+    left: 0;
+  }
+
+  .tag8 {
+    left: 0;
+  }
+
+  .tag9 {
+    left: 0;
+  }
+
+  .tag10 {
+    right: 0;
+  }
+
+  .tag11 {
+    right: 0;
+  }
 }
 
 @media (max-width: 960px) {
@@ -277,6 +385,7 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
   .photo {
     max-height: 520px;
   }
@@ -286,6 +395,7 @@
   .section {
     padding: 70px 5vw 70px;
   }
+
   .floatingTag {
     font-size: 9px;
     padding: 5px 8px;
