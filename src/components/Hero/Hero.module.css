@@ -96,7 +96,7 @@
   display: block;
   font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-weight: 800;
-  font-size: clamp(110px, 22vw, 340px);
+  font-size: clamp(75px, 15.5vw, 220px);
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #ffffff;
@@ -136,7 +136,7 @@
   display: block;
   font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-weight: 800;
-  font-size: clamp(110px, 22vw, 340px);
+  font-size: clamp(75px, 15.5vw, 220px);
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: transparent;
@@ -145,17 +145,52 @@
 }
 
 
-/* ── Responsive ── */
-@media (max-width: 768px) {
+/* ── Bottom Dark Fade Overlay ── */
+.bottomDarkFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 260px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.95) 100%);
+  z-index: 5;
+  pointer-events: none;
+}
 
+/* ── Responsive breakpoints for fluid typography ── */
+@media (max-width: 1024px) {
   .textFill .line1,
   .textFill .line2,
   .textStroke .line1,
   .textStroke .line2 {
-    font-size: clamp(52px, 18vw, 100px);
+    font-size: clamp(50px, 14vw, 120px);
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.95);
   }
 
   .photo {
-    height: 85vh;
+    height: 80vh;
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 600px) {
+  .textFill .line1,
+  .textFill .line2,
+  .textStroke .line1,
+  .textStroke .line2 {
+    font-size: clamp(34px, 12.5vw, 65px);
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.95);
+  }
+
+  .photo {
+    height: 70vh;
+    transform: translateY(0);
+  }
+
+  .introBlock {
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+    max-width: 100%;
   }
 }

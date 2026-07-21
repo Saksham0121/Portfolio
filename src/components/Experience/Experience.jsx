@@ -69,13 +69,7 @@ export default function Experience() {
 
   return (
     <section className={styles.section} id="experience">
-      <motion.div
-        className={styles.header}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className={styles.header}>
         <div className={styles.headerRow}>
           <div>
             <h2 className={styles.title}>EXPERIENCE & EDUCATION</h2>
@@ -112,7 +106,8 @@ export default function Experience() {
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
+
 
       {/* Tab Content */}
       <AnimatePresence mode="wait">

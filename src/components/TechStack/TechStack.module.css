@@ -10,12 +10,16 @@
   overflow: hidden;
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 28px 28px;
+  scroll-margin-top: 100px;
 }
+
 
 
 /* ── Header ── */
 .header {
-  margin-bottom: 52px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 56px;
 }
 
 .title {

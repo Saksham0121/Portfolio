@@ -64,27 +64,23 @@ const categories = [
 export default function TechStack() {
   return (
     <section className={styles.section} id="tech-stack">
-      <motion.div
-        className={styles.header}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className={styles.header}>
         <h2 className={styles.title}>Tech Stack</h2>
         <p className={styles.subtitle}>Technologies & Tools I Work With</p>
-      </motion.div>
+      </div>
+
 
       <div className={styles.grid}>
         {categories.map((cat, idx) => (
           <motion.div
             key={cat.title}
             className={styles.card}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
+
             <h3 className={styles.cardTitle}>{cat.title}</h3>
             <div className={styles.tilesGrid}>
               {cat.skills.map((skill) => (

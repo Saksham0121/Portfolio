@@ -20,25 +20,20 @@ const floatingTags = [
 export default function About() {
   return (
     <section className={styles.section} id="about">
-      <motion.div
-        className={styles.header}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className={styles.header}>
         <h2 className={styles.title}>ABOUT ME</h2>
         <p className={styles.subtitle}>Profile & Resume</p>
-      </motion.div>
+      </div>
+
 
       <div className={styles.stage}>
         {/* Left Side: Enlarged Photo with Floating Info Boxes */}
         <motion.div
           className={styles.speakerCol}
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className={styles.photoContainer}>
             <div className={styles.glowingRing} />
@@ -53,7 +48,7 @@ export default function About() {
                 className={`${styles.floatingTag} ${tag.posClass}`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 animate={{ y: [0, -7, 0] }}
                 transition={{
                   y: {
@@ -76,11 +71,12 @@ export default function About() {
         {/* Right Side: Straight Full Resume Viewer */}
         <motion.div
           className={styles.resumeCol}
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
+
           <div className={styles.resumeCard}>
             {/* Top Bar */}
             <div className={styles.cardTopBar}>

@@ -106,6 +106,10 @@ export default function Hero() {
           <span ref={line2StrokeRef} className={styles.line2}>SAHU</span>
         </div>
       </div>
+
+      {/* ── Bottom Dark Gradient Overlay for clean black fade ── */}
+      <div className={styles.bottomDarkFade} />
     </section>
   );
 }
+

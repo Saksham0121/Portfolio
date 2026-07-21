@@ -53,19 +53,14 @@ export default function Footer() {
 
       <div className={styles.container}>
         {/* Top Header */}
-        <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <div className={styles.header}>
           <span className={styles.sectionLabel}>06 // CONTACT & SOCIALS</span>
           <h2 className={styles.title}>Let's Build Something Impactful.</h2>
           <p className={styles.subtitle}>
             Have an exciting AI project, full-stack opportunity, or research idea? Reach out directly!
           </p>
-        </motion.div>
+        </div>
+
 
         {/* Social Cards Grid */}
         <div className={styles.grid}>
@@ -80,8 +75,8 @@ export default function Footer() {
                 className={styles.socialCard}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className={styles.cardHeader}>
                   <div className={styles.iconBox}>
@@ -103,8 +98,8 @@ export default function Footer() {
           className={styles.copyBanner}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className={styles.copyBannerLeft}>
             <MapPin size={18} className={styles.pinIcon} />
@@ -131,9 +126,10 @@ export default function Footer() {
           className={styles.interestsSection}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
+
           <h3 className={styles.interestsTitle}>DOMAINS OF INTEREST</h3>
           <div className={styles.interestsGrid}>
             {interests.map((item) => {

@@ -47,16 +47,11 @@ const projects = [
 export default function Projects() {
   return (
     <section className={styles.section} id="projects">
-      <motion.div
-        className={styles.header}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className={styles.header}>
         <h2 className={styles.title}>MY PROJECTS</h2>
         <p className={styles.subtitle}>Things I've built</p>
-      </motion.div>
+      </div>
+
 
       <div className={styles.grid}>
         {projects.map((p, i) => (
@@ -66,11 +61,12 @@ export default function Projects() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.card}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
+
             <div className={styles.cardTop}>
               <span className={styles.num}>{p.number}</span>
               <span className={styles.year}>{p.year}</span>
