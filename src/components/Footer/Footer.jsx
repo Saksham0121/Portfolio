@@ -103,7 +103,7 @@ export default function Footer() {
         >
           <div className={styles.copyBannerLeft}>
             <MapPin size={18} className={styles.pinIcon} />
-            <span>Based in Faridabad, India · Open for Remote & Global Roles</span>
+            <span>Based in Faridabad, India · Open for Remote, Hybrid or Onsite Roles</span>
           </div>
 
           <button onClick={handleCopyEmail} className={styles.copyBtn}>
