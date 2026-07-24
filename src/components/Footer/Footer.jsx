@@ -130,7 +130,7 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
 
-          <h3 className={styles.interestsTitle}>DOMAINS OF INTEREST</h3>
+          <h3 className={styles.interestsTitle}>Like to talk about..</h3>
           <div className={styles.interestsGrid}>
             {interests.map((item) => {
               const Icon = item.icon;
