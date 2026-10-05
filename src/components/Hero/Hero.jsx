@@ -1,115 +1,95 @@
-import { useEffect, useRef } from 'react';
-import photo from '../../assets/Photonobg.png';
+import { useState, useRef } from 'react';
+import { ArrowDown, Download } from 'lucide-react';
+import photo from '../../assets/coverphoto.jpg';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-  const line2FillRef = useRef(null);
-  const line1FillRef = useRef(null);
-  const line2StrokeRef = useRef(null);
-  const line1StrokeRef = useRef(null);
-  const photoRef = useRef(null);
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const containerRef = useRef(null);
 
-  useEffect(() => {
-    const l2Fill = line2FillRef.current;
-    const l1Fill = line1FillRef.current;
-    const l2Stroke = line2StrokeRef.current;
-    const l1Stroke = line1StrokeRef.current;
-    const img = photoRef.current;
+  const handleMouseMove = (e) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    if (!l2Fill || !l1Fill || !l2Stroke || !l1Stroke || !img) return;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
-    // Reset initial states
-    const resetLine = (el) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(100%)';
-    };
+    // Calculate rotation (-15 to 15 degrees max)
+    const rotateX = ((y - centerY) / centerY) * -15;
+    const rotateY = ((x - centerX) / centerX) * 15;
 
-    resetLine(l2Fill);
-    resetLine(l2Stroke);
-    resetLine(l1Fill);
-    resetLine(l1Stroke);
+    setRotation({ x: rotateX, y: rotateY });
+  };
 
-    img.style.opacity = '0';
-    img.style.transform = 'translateY(40px) scale(0.95)';
+  const handleMouseLeave = () => {
+    setRotation({ x: 0, y: 0 });
+  };
 
-    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
-
-    // Step 1: Bottom line "SAHU" builds up from bottom first
-    const t1 = setTimeout(() => {
-      l2Fill.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
-      l2Stroke.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
-      l2Fill.style.opacity = '1';
-      l2Stroke.style.opacity = '1';
-      l2Fill.style.transform = 'translateY(0)';
-      l2Stroke.style.transform = 'translateY(0)';
-    }, 200);
-
-    // Step 2: Top line "SAKSHAM" builds up from bottom second
-    const t2 = setTimeout(() => {
-      l1Fill.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
-      l1Stroke.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
-      l1Fill.style.opacity = '1';
-      l1Stroke.style.opacity = '1';
-      l1Fill.style.transform = 'translateY(0)';
-      l1Stroke.style.transform = 'translateY(0)';
-    }, 550);
-
-    // Step 3: Photo rises up from bottom
-    const t3 = setTimeout(() => {
-      img.style.transition = `opacity 1.1s ${ease}, transform 1.1s ${ease}`;
-      img.style.opacity = '1';
-      img.style.transform = 'translateY(-40px) scale(1)';
-    }, 1000);
-
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-    };
-  }, []);
+  const scrollToProjects = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('projects');
+    if (el) {
+      const yOffset = -80;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className={styles.hero} id="hero">
+      <div className={styles.contentContainer}>
+        <div className={styles.textSection}>
+          <h1 className={styles.title}>SAKSHAM SAHU</h1>
+          <h3 className={styles.introHeadline}>
+            Quiet backend. Sharp retrieval. Real impact.
+          </h3>
+          <div className={styles.summaryWrapper}>
+            <p className={styles.introSubheadline}>
+              I'm a software engineer who builds reliable backend systems and Generative AI solutions, with hands-on experience in scalable architectures and intelligent, data-driven applications.
+            </p>
+            <p className={styles.introSubheadlineSecondary}>
+              I love turning everyday problems into simple, practical products that make people's lives easier and better.
+            </p>
+          </div>
 
-      {/* ── Bottom-left intro text ── */}
-      <div className={styles.introBlock}>
-        <h3 className={styles.introHeadline}>
-          Quiet backend. Sharp retrieval. Real impact.
-        </h3>
-        <p className={styles.introSubheadline}>
-          B.Tech CSE Student | Software Engineer | Eager Learner who loves finding new ways to solve problems
-        </p>
-      </div>
-
-
-      {/* ── Layer 1: Filled white text (bottom) ── */}
-      <div className={`${styles.textLayer} ${styles.textFill}`} aria-hidden="true">
-        <div className={styles.lineWrap}>
-          <span ref={line1FillRef} className={styles.line1}>SAKSHAM</span>
+          <div className={styles.ctaGroup}>
+            <a href="#projects" onClick={scrollToProjects} className={styles.primaryBtn}>
+              <span>View Projects</span>
+              <ArrowDown size={16} />
+            </a>
+            <a
+              href="/resume.pdf"
+              download="Saksham_Sahu_Resume.pdf"
+              className={styles.secondaryBtn}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Download size={16} />
+              <span>Download Resume</span>
+            </a>
+          </div>
         </div>
-        <div className={styles.lineWrap}>
-          <span ref={line2FillRef} className={styles.line2}>SAHU</span>
+
+        <div className={styles.imageSection}>
+          <div
+            className={styles.imageStack}
+            ref={containerRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+              transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+              transition: rotation.x === 0 && rotation.y === 0 ? 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' : 'transform 0.1s ease-out'
+            }}
+          >
+            <div className={styles.imageBackdrop}></div>
+            <div className={styles.imageBox}>
+              <img src={photo} alt="Saksham Sahu" className={styles.photo} />
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* ── Layer 2: Photo (middle) ── */}
-      <div className={styles.photoLayer}>
-        <img ref={photoRef} src={photo} alt="Saksham Sahu" className={styles.photo} />
-      </div>
-
-      {/* ── Layer 3: Stroke-only text (top — always visible) ── */}
-      <div className={`${styles.textLayer} ${styles.textStroke}`} aria-label="SAKSHAM SAHU">
-        <div className={styles.lineWrap}>
-          <span ref={line1StrokeRef} className={styles.line1}>SAKSHAM</span>
-        </div>
-        <div className={styles.lineWrap}>
-          <span ref={line2StrokeRef} className={styles.line2}>SAHU</span>
-        </div>
-      </div>
-
-      {/* ── Bottom Dark Gradient Overlay for clean black fade ── */}
-      <div className={styles.bottomDarkFade} />
     </section>
   );
 }
-

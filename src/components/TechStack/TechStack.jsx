@@ -1,62 +1,76 @@
 import { motion } from 'framer-motion';
+import {
+  Globe,
+  Layers,
+  Bot,
+  ScanSearch,
+  Workflow,
+  Zap,
+  ShieldCheck,
+  Activity,
+  DatabaseZap,
+} from 'lucide-react';
 import styles from './TechStack.module.css';
 
 const categories = [
   {
     title: 'Languages',
     skills: [
-      { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
       { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+      { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
       { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
       { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+      { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', fullWidth: true },
     ],
   },
   {
-    title: 'Frontend',
+    title: 'Web & Backend',
     skills: [
       { name: 'React.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
       { name: 'Next.js', icon: 'https://cdn.simpleicons.org/nextdotjs/ffffff' },
-      { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-      { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-    ],
-  },
-  {
-    title: 'Backend',
-    skills: [
       { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
       { name: 'Express.js', icon: 'https://cdn.simpleicons.org/express/ffffff' },
-      { name: 'FastAPI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
-      { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+      { name: 'REST API', iconComponent: Globe, fullWidth: true },
     ],
   },
   {
     title: 'Databases',
     skills: [
-      { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
       { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+      { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
       { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-      { name: 'Vector DBs', icon: 'https://cdn.simpleicons.org/chromadb/ffffff' },
+      { name: 'Vector Databases', iconComponent: DatabaseZap },
+    ],
+  },
+  {
+    title: 'Gen AI',
+    skills: [
+      { name: 'RAG', iconComponent: Layers },
+      { name: 'LLMs', iconComponent: Bot },
+      { name: 'LangChain', icon: 'https://cdn.simpleicons.org/langchain/ffffff' },
+      { name: 'Vector Search', iconComponent: ScanSearch },
     ],
   },
   {
     title: 'Cloud & DevOps',
     skills: [
+      {
+        name: 'AWS',
+        subtitle: 'ECR · ECS · EC2 · ALB',
+        icon: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
+      },
       { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-      { name: 'Kubernetes', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
-      { name: 'AWS', icon: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
-
       { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-
+      { name: 'CI/CD Pipelines', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg' },
     ],
   },
   {
-    title: 'Gen AI & Tools',
+    title: 'System Architecture',
     skills: [
-      { name: 'LangChain', icon: 'https://cdn.simpleicons.org/langchain/ffffff' },
-      { name: 'RAG & LLMs', icon: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>' },
-
-      { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
-      { name: 'Postman', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg' },
+      { name: 'Scalable Architecture', iconComponent: Workflow },
+      { name: 'High Performance', iconComponent: Zap },
+      { name: 'Reliability & Resilience', iconComponent: ShieldCheck },
+      { name: 'Observability', iconComponent: Activity },
     ],
   },
 ];
@@ -66,9 +80,8 @@ export default function TechStack() {
     <section className={styles.section} id="tech-stack">
       <div className={styles.header}>
         <h2 className={styles.title}>Tech Stack</h2>
-        <p className={styles.subtitle}>Technologies & Tools I Work With</p>
+        <p className={styles.subtitle}>Technologies & Architecture I Work With</p>
       </div>
-
 
       <div className={styles.grid}>
         {categories.map((cat, idx) => (
@@ -78,21 +91,26 @@ export default function TechStack() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
           >
-
             <h3 className={styles.cardTitle}>{cat.title}</h3>
             <div className={styles.tilesGrid}>
-              {cat.skills.map((skill) => (
-                <div key={skill.name} className={styles.tile}>
-                  <img
-                    src={skill.icon}
-                    alt={skill.name}
-                    className={styles.tileIcon}
-                  />
-                  <span className={styles.tileName}>{skill.name}</span>
-                </div>
-              ))}
+              {cat.skills.map((skill) => {
+                const tileClass = skill.fullWidth ? `${styles.tile} ${styles.tileFullWidth}` : styles.tile;
+                const IconComp = skill.iconComponent;
+
+                return (
+                  <div key={skill.name} className={tileClass}>
+                    {skill.icon ? (
+                      <img src={skill.icon} alt={skill.name} className={styles.tileIcon} />
+                    ) : (
+                      IconComp && <IconComp className={styles.tileIconSvg} />
+                    )}
+                    <span className={styles.tileName}>{skill.name}</span>
+                    {skill.subtitle && <span className={styles.tileSubtitle}>{skill.subtitle}</span>}
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
         ))}

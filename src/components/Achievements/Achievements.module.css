@@ -1,107 +1,204 @@
 /* ═══════════════════════════════════════════════
-   Achievements — Trophy Cards
+   Achievements — Trophy & Milestone Cards
    ═══════════════════════════════════════════════ */
 
 .section {
-  padding: 100px 6vw 80px;
-  max-width: 1280px;
-  margin: 0 auto;
+  position: relative;
+  background: transparent;
+  padding: 100px 6vw 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  scroll-margin-top: 100px;
 }
 
+/* ── Header ── */
 .header {
+  position: relative;
+  z-index: 10;
   margin-bottom: 56px;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  margin-top: 14px;
-  color: var(--text-1);
+  color: #fff;
+  line-height: 1;
 }
 
+.subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 12px;
+}
+
+/* ── 2-Column Cards Grid ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 24px;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
+.cardWrapper {
+  height: 100%;
+}
+
+/* ── Achievement Card ── */
 .card {
+  height: 100%;
+  background: rgba(12, 12, 12, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 30px 28px;
   display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  padding: 26px 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth);
+  flex-direction: column;
+  gap: 22px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clickableCard {
+  cursor: pointer;
 }
 
 .card:hover {
-  border-color: color-mix(in srgb, var(--card-color) 30%, transparent);
-  box-shadow:
-    0 16px 50px rgba(0, 0, 0, 0.4),
-    0 0 25px color-mix(in srgb, var(--card-color) 8%, transparent);
+  border-color: rgba(255, 255, 255, 0.22);
   transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
-.iconWrap {
+.clickableCard:hover .arrowIcon {
+  transform: translate(3px, -3px);
+  color: #ffffff;
+}
+
+/* ── Card Top Header ── */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.iconBox {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
-  border: 1px solid;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #ffffff;
   flex-shrink: 0;
-  transition: box-shadow 0.3s;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
-.card:hover .iconWrap {
-  box-shadow: 0 0 20px color-mix(in srgb, var(--card-color) 30%, transparent);
+.card:hover .iconBox {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-.cardContent {
-  flex: 1;
-  min-width: 0;
+.icon {
+  stroke-width: 1.8;
 }
 
-.cardHead {
+.metaGroup {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 8px;
 }
 
-.cardTitle {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-1);
-  letter-spacing: -0.01em;
-  line-height: 1.4;
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .year {
-  font-family: var(--font-mono);
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Card Body ── */
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
   font-weight: 700;
-  white-space: nowrap;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.arrowIcon {
+  color: rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
+  margin-top: 3px;
+  transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .cardDetail {
-  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
   line-height: 1.7;
-  color: var(--text-2);
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
 }
 
-@media (max-width: 768px) {
-  .section { padding: 80px 5vw 60px; }
-  .title { font-size: 2rem; }
-  .grid { grid-template-columns: 1fr; gap: 14px; }
+.linkText {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 4px;
+  transition: color 0.2s ease;
+}
+
+.clickableCard:hover .linkText {
+  color: #ffffff;
+}
+
+/* ── Responsive Breakpoints ── */
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .section {
+    padding: 80px 5vw 80px;
+  }
 }

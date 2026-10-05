@@ -9,7 +9,7 @@ const experiences = [
   {
     company: 'DRDO, Ministry of Defence',
     role: 'Generative AI Intern',
-    period: 'May 2026 – Present',
+    period: 'June 2026 – Jul 2026',
     location: 'Delhi / NCR, India',
     logo: drdoLogo,
     points: [

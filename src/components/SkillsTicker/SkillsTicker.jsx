@@ -2,15 +2,16 @@ import { motion } from 'framer-motion';
 import styles from './SkillsTicker.module.css';
 
 const row1 = [
-  'Python', 'React.js', 'LangChain', 'RAG Systems', 'Node.js',
-  'TypeScript', 'FastAPI', 'Generative AI', 'Next.js', 'LLMs',
-  'JavaScript', 'Vector Search', 'MongoDB', 'C++', 'ChromaDB',
+  'Python', 'C++', 'Java', 'JavaScript', 'TypeScript',
+  'React.js', 'Next.js', 'Node.js', 'Express.js', 'REST API',
+  'RAG', 'LLMs', 'LangChain', 'Prompt Engineering', 'ChromaDB',
 ];
 
 const row2 = [
-  'Scikit-learn', 'Power BI', 'PostgreSQL', 'Docker', 'Prompt Engineering',
-  'Semantic Search', 'Express.js', 'Pandas', 'System Design', 'Git',
-  'WebSocket', 'Embedding Models', 'NumPy', 'BM25', 'Gemini API',
+  'AWS (ECR / ECS / EC2)', 'Docker', 'Git', 'CI/CD Pipelines',
+  'Vector Search', 'Semantic Search', 'Embedding Models', 'Vector Databases',
+  'PostgreSQL', 'MongoDB', 'MySQL', 'System Design', 'Data Structures & Algorithms',
+  'Postman', 'Power BI', 'Figma',
 ];
 
 function TickerRow({ items, direction = 'left' }) {

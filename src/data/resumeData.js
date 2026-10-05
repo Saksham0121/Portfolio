@@ -41,40 +41,40 @@ export const stats = [
 
 export const skills = {
   languages: [
-    { name: "Python", level: 90, color: "#4ecdc4" },
-    { name: "JavaScript", level: 85, color: "#d4a853" },
-    { name: "C++", level: 82, color: "#9b59b6" },
-    { name: "TypeScript", level: 78, color: "#6366f1" },
+    { name: "C++", level: 88, color: "#9b59b6" },
+    { name: "Python", level: 92, color: "#4ecdc4" },
+    { name: "Java", level: 82, color: "#e0568a" },
+    { name: "JavaScript", level: 86, color: "#d4a853" },
+    { name: "TypeScript", level: 84, color: "#6366f1" },
   ],
   web: [
     { name: "React.js", level: 88, color: "#4ecdc4" },
-    { name: "Next.js", level: 80, color: "#d4a853" },
+    { name: "Next.js", level: 82, color: "#d4a853" },
     { name: "Node.js", level: 85, color: "#9b59b6" },
     { name: "Express.js", level: 82, color: "#6366f1" },
+    { name: "REST API", level: 90, color: "#22c55e" },
   ],
   ai: [
-    { name: "RAG Architecture", level: 92, color: "#4ecdc4" },
-    { name: "LangChain", level: 88, color: "#d4a853" },
-    { name: "LLM Integration", level: 85, color: "#9b59b6" },
-    { name: "Vector Search", level: 86, color: "#6366f1" },
+    { name: "RAG", level: 94, color: "#4ecdc4" },
+    { name: "LLMs", level: 90, color: "#d4a853" },
+    { name: "LangChain", level: 88, color: "#9b59b6" },
+    { name: "Vector Search", level: 89, color: "#6366f1" },
   ],
-  data: [
-    { name: "MySQL / PostgreSQL", level: 85, color: "#4ecdc4" },
+  cloudData: [
+    { name: "AWS (ECR/ECS/EC2)", level: 82, color: "#f97316" },
+    { name: "Docker & CI/CD", level: 85, color: "#06b6d4" },
+    { name: "PostgreSQL / MySQL", level: 86, color: "#4ecdc4" },
     { name: "MongoDB", level: 88, color: "#d4a853" },
-    { name: "Power BI", level: 80, color: "#9b59b6" },
-    { name: "Scikit-learn", level: 78, color: "#6366f1" },
   ],
 };
 
 export const techStack = [
-  { category: "Languages", items: ["C++", "JavaScript", "Python", "TypeScript"] },
-  { category: "Frontend", items: ["React.js", "Next.js", "HTML5", "CSS3", "Tailwind"] },
-  { category: "Backend", items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "WebSocket"] },
-  { category: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB", "ChromaDB", "Firebase"] },
-  { category: "Gen AI / ML", items: ["RAG", "LangChain", "LLMs", "Prompt Engineering", "ChromaDB", "Vector Search", "BM25", "Semantic Search", "Embedding Models"] },
-  { category: "Data & BI", items: ["Power BI", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn"] },
-  { category: "DevOps & Tools", items: ["Git", "GitHub", "Docker", "VS Code", "Postman", "Google Colab", "Figma"] },
-  { category: "Core CS", items: ["DSA (LeetCode 600+)", "OOPs", "DBMS", "OS", "Computer Networks", "System Design"] },
+  { category: "Languages", items: ["C++", "Python", "Java", "JavaScript", "TypeScript"] },
+  { category: "Web & Backend", items: ["React.js", "Next.js", "Node.js", "Express.js", "REST API"] },
+  { category: "Databases", items: ["MySQL", "MongoDB", "PostgreSQL", "Vector Databases"] },
+  { category: "Gen AI", items: ["RAG", "LLMs", "LangChain", "Vector Search"] },
+  { category: "Cloud & DevOps", items: ["AWS (ECR, ECS, EC2, ALB)", "Docker", "Git", "CI/CD pipelines"] },
+  { category: "System Architecture", items: ["Scalable Architecture", "High Performance", "Reliability & Resilience", "Observability"] },
 ];
 
 export const experience = [
@@ -166,31 +166,37 @@ export const projects = [
 export const achievements = [
   {
     icon: "trophy",
-    title: "Innovate 2.0 — National Winner",
-    detail: "1st place among 200+ teams at JIIT Noida Hackathon 2024. Built Saahasini — a women's safety app with real-time GPS, SOS alerts, and geofencing.",
-    color: "#d4a853",
+    badge: "1st / 200+ Teams",
+    title: "Innovate 2.0: Hack to Build — National Winner",
+    detail: "National level winner among 200+ teams at JIIT Noida 2024. Recognized for technical excellence, architecture, and execution under pressure.",
     year: "2024",
+    color: "#ffffff",
+  },
+  {
+    icon: "shield",
+    badge: "DRDO Production RAG",
+    title: "Secure Hybrid RAG at DRDO",
+    detail: "Built a secure Hybrid RAG system at DRDO, now adopted for internal use across centers, with 92.5% retrieval accuracy across 11,000+ pages of confidential documents.",
+    year: "2026",
+    color: "#ffffff",
   },
   {
     icon: "award",
-    title: "GDSC Solution Challenge",
-    detail: "Selected for India Regional Bootcamp — Delhi NCR. Recognized for innovative problem-solving and technical execution.",
-    color: "#4ecdc4",
+    badge: "Regional Finalist",
+    title: "Google Solution Challenge",
+    detail: "Selected for the India Regional Bootcamp in the Google Solution Challenge for impactful problem-solving and software engineering execution.",
     year: "2024",
+    color: "#ffffff",
   },
   {
-    icon: "medal",
-    title: "TechArena 2025 — 3rd Place",
-    detail: "Secured 3rd position at TechArena Project Showcase 2025 for a standout technical project demonstration.",
-    color: "#9b59b6",
-    year: "2025",
-  },
-  {
-    icon: "star",
-    title: "LeetCode 600+ Problems",
-    detail: "Strong problem-solving foundation with 600+ DSA problems solved across arrays, trees, graphs, and dynamic programming.",
-    color: "#e0568a",
-    year: "Ongoing",
+    icon: "code",
+    badge: "700+ Solved",
+    title: "LeetCode — 700+ DSA Problems",
+    detail: "Solved 700+ Data Structures & Algorithms problems across arrays, trees, graphs, and dynamic programming.",
+    link: "https://leetcode.com/u/amSaksham",
+    linkText: "leetcode.com/u/amSaksham",
+    year: "Active",
+    color: "#ffffff",
   },
 ];
 

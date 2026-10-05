@@ -1,19 +1,30 @@
 import { motion } from 'framer-motion';
+import { Github, ArrowUpRight } from 'lucide-react';
 import styles from './Projects.module.css';
 
 const projects = [
   {
     number: '01',
-    name: 'InsightFlow AI',
-    subtitle: 'Enterprise RAG Knowledge Assistant',
-    description: 'Production-grade internal knowledge assistant that enables organizations to upload documents and ask natural language questions. Uses a multi-stage Advanced RAG pipeline with hybrid retrieval (FAISS semantic + BM25 keyword), cross-encoder reranking, and Gemini-powered query rewriting — delivering citation-backed answers grounded in the enterprise knowledge base.',
-    tags: ['FastAPI', 'React', 'Gemini API', 'FAISS', 'MongoDB', 'LangChain', 'RBAC'],
-    highlights: ['Hybrid Retrieval', 'Cross-Encoder Reranking', 'RBAC + JWT', 'Real-time SSE Streaming'],
-    link: 'https://github.com/Saksham0121/AI_knowlege_assistant',
+    name: 'Parakh',
+    subtitle: 'Enterprise Algorithmic Trading Platform',
+    description: 'High-throughput event-driven trading and backtesting platform built as a 9-service NestJS microservices architecture. Processes real-time market streams through Kafka, calculates technical indicators with TimescaleDB, combines technical and fundamental trading conditions, and delivers real-time alerts with horizontally scalable infrastructure, fault tolerance, and distributed observability.',
+    tags: ['NestJS', 'TypeScript', 'Kafka', 'TimescaleDB', 'PostgreSQL', 'Redis', 'Docker', 'OpenTelemetry'],
+    highlights: ['9 Microservices', 'Event-Driven Architecture', 'Real-Time Market Data', 'High-Throughput Pipelines', 'Distributed Tracing'],
+    link: 'https://github.com/Saksham0121/Parakh',
     year: '2026',
   },
   {
     number: '02',
+    name: 'Askra AI',
+    subtitle: '7-Layer Agentic RAG System',
+    description: 'Enterprise AI platform built around a 7-layer agentic pipeline for grounded knowledge retrieval and multimodal document understanding. Combines query rewriting, FAISS + BM25 hybrid retrieval, cross-encoder reranking, LLM-as-judge validation, reflection-based self-correction, and local OCR to deliver citation-backed responses with confidence scoring.',
+    tags: ['FastAPI', 'React', 'LangChain', 'Groq', 'FAISS', 'BM25', 'MongoDB', 'SSE'],
+    highlights: ['7-Layer Agentic RAG', 'Hybrid Retrieval + Reranking', 'LLM Self-Correction', 'Local Multimodal OCR', 'RBAC + JWT'],
+    link: 'https://github.com/Saksham0121/AI_knowlege_assistant',
+    year: '2026',
+},
+  {
+    number: '03',
     name: 'Social-ish',
     subtitle: 'Social Platform for Introverts',
     description: 'A full-stack social platform with interest-based matching and real-time WebSocket chat. Features an AI chatbot powered by the Gemini API with custom prompt engineering for personalized conversation support. Secured with JWT-based REST API and built for users who prefer meaningful, low-pressure social interaction.',
@@ -23,7 +34,7 @@ const projects = [
     year: '2025',
   },
   {
-    number: '03',
+    number: '04',
     name: 'Planit',
     subtitle: 'Event Planner & Management Platform',
     description: 'A Next.js-powered event planning and management web application. Enables users to create, organize, and manage events with a clean and intuitive interface. Built with modern full-stack Next.js architecture for seamless server-side rendering and fast page loads.',
@@ -31,16 +42,6 @@ const projects = [
     highlights: ['Event Management', 'SSR with Next.js', 'Full-Stack', 'Modern UI'],
     link: 'https://github.com/Saksham0121/Planit',
     year: '2025',
-  },
-  {
-    number: '04',
-    name: 'Customer Segmentation',
-    subtitle: 'ML Clustering for Investment Banking',
-    description: 'Machine learning-based customer segmentation for investment banking clients. Uses K-Means clustering and RFM (Recency, Frequency, Monetary) analysis on demographic and investment data to identify high-value and at-risk clients — enabling targeted retention strategies and personalized financial services.',
-    tags: ['Python', 'Scikit-learn', 'Pandas', 'K-Means', 'RFM Analysis', 'Matplotlib'],
-    highlights: ['K-Means Clustering', 'RFM Analysis', '1200+ Clients', '25% Churn Reduction'],
-    link: 'https://github.com/Saksham0121/Customer_Segmentation',
-    year: '2024',
   },
 ];
 
@@ -91,6 +92,24 @@ export default function Projects() {
             <div className={styles.arrow}>↗</div>
           </motion.a>
         ))}
+      </div>
+
+      <div className={styles.bottomBar}>
+        <motion.a
+          href="https://github.com/Saksham0121"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.githubBtn}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ y: -2 }}
+        >
+          <Github size={16} className={styles.githubIcon} />
+          <span>More Projects on GitHub</span>
+          <ArrowUpRight size={14} className={styles.btnArrow} />
+        </motion.a>
       </div>
     </section>
   );

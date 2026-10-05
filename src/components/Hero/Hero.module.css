@@ -1,196 +1,277 @@
 /* ═══════════════════════════════════════════
-   HERO — Name + Photo Knockout Effect
+   HERO — Simple Dark Theme Layout
    ═══════════════════════════════════════════ */
 
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  background: transparent;
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 5%;
+  overflow: hidden;
 }
 
-
-/* ── Top-left name label ── */
-.nameLabel {
-  position: absolute;
-  top: 28px;
-  left: 32px;
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1360px;
+  gap: 5rem;
   z-index: 10;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.04em;
-  animation: fadeIn 1s ease 1.6s both;
 }
 
-/* ── Bottom-left intro text ── */
-.introBlock {
-  position: absolute;
-  bottom: 40px;
-  left: 36px;
-  z-index: 10;
-  max-width: 480px;
-  animation: fadeIn 1s ease 1.8s both;
+.textSection {
+  flex: 1.35;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(3.5rem, 6.2vw, 6.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.05;
+  margin: 0;
+  letter-spacing: -0.03em;
 }
 
 .introHeadline {
   font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-size: clamp(1.3rem, 2.3vw, 2.1rem);
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  margin: 0 0 10px 0;
+  font-size: clamp(1.2rem, 2.1vw, 1.75rem);
+  font-weight: 600;
+  color: #d1d5db;
+  line-height: 1.4;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.summaryWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 660px;
 }
 
 .introSubheadline {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.75;
   margin: 0;
+  letter-spacing: -0.01em;
 }
 
-@keyframes fadeIn {
+.introSubheadlineSecondary {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.08vw, 1.05rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.7;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ctaGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #000000;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  background-color: #e5e5e5;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.secondaryBtn:hover {
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.imageSection {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
+}
+
+.imageStack {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  /* Ensure it has a 3D context for children */
+  transform-style: preserve-3d;
+}
+
+.imageBackdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #666666 30%,
+    #111111 65%,
+    #000000 85%,
+    #cccccc 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 7s ease infinite;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  transform: rotate(-6deg) translateZ(-50px);
+  z-index: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.08);
+}
+
+.imageBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  transform: translateZ(20px);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* On hover, we separate the layers more for a crazy 3D depth effect */
+.imageStack:hover .imageBackdrop {
+  transform: rotate(-9deg) translateZ(-80px) scale(1.05);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(255, 255, 255, 0.18);
+}
+
+.imageStack:hover .photo {
+  transform: scale(1.03);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes slideUp {
   from {
     opacity: 0;
+    transform: translateY(40px);
   }
 
   to {
     opacity: 1;
-  }
-}
-
-
-/* ── Shared text layer ── */
-.textLayer {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  line-height: 0.88;
-  user-select: none;
-}
-
-.lineWrap {
-  overflow: hidden;
-  display: block;
-}
-
-/* ── Filled white text — bottom layer ── */
-.textFill {
-  z-index: 1;
-}
-
-.textFill .line1,
-.textFill .line2 {
-  display: block;
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-weight: 800;
-  font-size: clamp(75px, 15.5vw, 220px);
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-/* ── Photo layer — sits on top of filled text ── */
-.photoLayer {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  pointer-events: none;
-  /* 100% solid opacity down to 85%, then smooth fade at the very bottom edge */
-  mask-image: linear-gradient(to bottom, #000000 85%, transparent 99%);
-  -webkit-mask-image: linear-gradient(to bottom, #000000 85%, transparent 99%);
-}
-
-.photo {
-  height: 90vh;
-  width: auto;
-  object-fit: contain;
-  object-position: bottom center;
-  display: block;
-  transform: translateY(-40px);
-}
-
-/* ── Stroke-only text — always on top ── */
-.textStroke {
-  z-index: 3;
-}
-
-.textStroke .line1,
-.textStroke .line2 {
-  display: block;
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-weight: 800;
-  font-size: clamp(75px, 15.5vw, 220px);
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 2.5px rgba(255, 255, 255, 0.95);
-  white-space: nowrap;
-}
-
-
-/* ── Bottom Dark Fade Overlay ── */
-.bottomDarkFade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 260px;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.95) 100%);
-  z-index: 5;
-  pointer-events: none;
-}
-
-/* ── Responsive breakpoints for fluid typography ── */
-@media (max-width: 1024px) {
-  .textFill .line1,
-  .textFill .line2,
-  .textStroke .line1,
-  .textStroke .line2 {
-    font-size: clamp(50px, 14vw, 120px);
-    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.95);
-  }
-
-  .photo {
-    height: 80vh;
-    transform: translateY(-20px);
-  }
-}
-
-@media (max-width: 600px) {
-  .textFill .line1,
-  .textFill .line2,
-  .textStroke .line1,
-  .textStroke .line2 {
-    font-size: clamp(34px, 12.5vw, 65px);
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.95);
-  }
-
-  .photo {
-    height: 70vh;
     transform: translateY(0);
   }
+}
 
-  .introBlock {
-    bottom: 24px;
-    left: 20px;
-    right: 20px;
+@media (max-width: 960px) {
+  .contentContainer {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  .imageSection {
+    justify-content: center;
+  }
+
+  .textSection {
+    align-items: center;
+  }
+
+  .summaryWrapper {
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .ctaGroup {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .introSubheadline,
+  .introSubheadlineSecondary {
+    text-align: center;
     max-width: 100%;
   }
 }
