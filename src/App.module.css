@@ -1,4 +1,11 @@
 .app {
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
+}
+
+.mainWrapper {
+  width: 100%;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }

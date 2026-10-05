@@ -4,13 +4,13 @@ export const profile = {
   name: "Saksham Sahu",
   initials: "SS",
   roles: [
-    "AI Engineer",
-    "Full-Stack Developer",
+    "Software Developer",
+    "GenAI Engineer",
     "RAG Systems Architect",
     "Data Analyst",
     "Problem Solver"
   ],
-  bio: "AI Engineer & Full-Stack Developer at the intersection of Generative AI and scalable systems. At DRDO, I build secure RAG pipelines with 92.5% retrieval accuracy. I craft full-stack platforms from React to Node.js, and have a proven track record of winning national hackathons and leading data-driven teams.",
+  bio: "Software Developer & GenAI Engineer at the intersection of Generative AI and scalable systems. At DRDO, I build secure RAG pipelines with 92.5% retrieval accuracy. I craft full-stack platforms from React to Node.js, and have a proven track record of winning national hackathons and leading data-driven teams.",
   shortBio: "Building intelligent systems. From LLMs to web apps.",
   domain: "Generative AI • RAG Systems • Full-Stack Engineering",
   contact: [

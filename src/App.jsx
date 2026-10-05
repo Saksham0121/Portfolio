@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import Hero from './components/Hero/Hero';
 import SkillsTicker from './components/SkillsTicker/SkillsTicker';
@@ -7,11 +7,36 @@ import Experience from './components/Experience/Experience';
 import Achievements from './components/Achievements/Achievements';
 import TechStack from './components/TechStack/TechStack';
 import Footer from './components/Footer/Footer';
+import IntroAnimation from './components/IntroAnimation/IntroAnimation';
 
 import styles from './App.module.css';
 
 export default function App() {
+  const [showIntro, setShowIntro] = useState(true);
   const vantaEffect = useRef(null);
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (showIntro) {
+      window.scrollTo(0, 0);
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, 0);
+    }
+    return () => {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    };
+  }, [showIntro]);
 
   useEffect(() => {
     let attempts = 0;
@@ -27,10 +52,10 @@ export default function App() {
           gyroControls: false,
           minHeight: 200.00,
           minWidth: 200.00,
-          highlightColor: 0x68696b,
-          midtoneColor: 0x0,
-          lowlightColor: 0x0,
-          baseColor: 0x111010,
+          highlightColor: 0x111111,
+          midtoneColor: 0x70707,
+          lowlightColor: 0xe9e9ed,
+          baseColor: 0x0,
           blurFactor: 0.62,
           speed: 0.80,
           zoom: 0.80,
@@ -52,14 +77,17 @@ export default function App() {
 
   return (
     <div className={styles.app}>
-      <Navigation />
-      <Hero />
-      <SkillsTicker />
-      <Projects />
-      <Experience />
-      <Achievements />
-      <TechStack />
-      <Footer />
+      {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
+      <div className={styles.mainWrapper}>
+        <Navigation />
+        <Hero />
+        <SkillsTicker />
+        <Projects />
+        <Experience />
+        <Achievements />
+        <TechStack />
+        <Footer />
+      </div>
     </div>
   );
 }
