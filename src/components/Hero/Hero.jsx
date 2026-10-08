@@ -6,6 +6,7 @@ import styles from './Hero.module.css';
 export default function Hero() {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
+  const rafRef = useRef(null);
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
@@ -13,17 +14,18 @@ export default function Hero() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    // Calculate rotation (-15 to 15 degrees max)
-    const rotateX = ((y - centerY) / centerY) * -15;
-    const rotateY = ((x - centerX) / centerX) * 15;
-
-    setRotation({ x: rotateX, y: rotateY });
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -15;
+      const rotateY = ((x - centerX) / centerX) * 15;
+      setRotation({ x: rotateX, y: rotateY });
+    });
   };
 
   const handleMouseLeave = () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     setRotation({ x: 0, y: 0 });
   };
 

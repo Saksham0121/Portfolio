@@ -40,37 +40,49 @@ export default function App() {
 
   useEffect(() => {
     let attempts = 0;
-    const maxAttempts = 20;
+    const maxAttempts = 35;
+    let timerId = null;
 
     const initVanta = () => {
-      if (window.VANTA && window.THREE) {
-        vantaEffect.current = window.VANTA.FOG({
-          el: document.getElementById('vanta-bg'),
-          THREE: window.THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          highlightColor: 0x111111,
-          midtoneColor: 0x70707,
-          lowlightColor: 0xe9e9ed,
-          baseColor: 0x0,
-          blurFactor: 0.62,
-          speed: 0.80,
-          zoom: 0.80,
-        });
+      if (window.VANTA && window.VANTA.FOG && window.THREE) {
+        try {
+          const el = document.getElementById('vanta-bg');
+          if (el && !vantaEffect.current) {
+            vantaEffect.current = window.VANTA.FOG({
+              el,
+              THREE: window.THREE,
+              mouseControls: false,
+              touchControls: false,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              highlightColor: 0x4a4a4a,
+              midtoneColor: 0x222222,
+              lowlightColor: 0x111111,
+              baseColor: 0x050505,
+              blurFactor: 0.60,
+              speed: 1.20,
+              zoom: 0.75,
+            });
+          }
+        } catch (err) {
+          console.warn('Vanta WebGL background initialization failed (safe fallback active):', err);
+        }
       } else if (attempts < maxAttempts) {
         attempts++;
-        setTimeout(initVanta, 150);
+        timerId = setTimeout(initVanta, 100);
       }
     };
 
     initVanta();
 
     return () => {
+      if (timerId) clearTimeout(timerId);
       if (vantaEffect.current) {
-        vantaEffect.current.destroy();
+        try {
+          vantaEffect.current.destroy();
+        } catch (_) {}
+        vantaEffect.current = null;
       }
     };
   }, []);

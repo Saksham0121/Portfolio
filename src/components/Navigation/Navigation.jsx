@@ -16,27 +16,33 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isScrolled = window.scrollY > 50;
+          setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
 
-      // Get sections with their DOM top position sorted by document position
-      const sectionElements = navItems
-        .map((item) => ({ id: item.id, el: document.getElementById(item.id) }))
-        .filter((item) => item.el !== null)
-        .map((item) => ({ id: item.id, top: item.el.offsetTop }))
-        .sort((a, b) => b.top - a.top); // Highest offsetTop first
+          const scrollPos = window.scrollY + 250;
+          let matched = '';
 
-      const scrollPos = window.scrollY + 250;
+          for (let i = navItems.length - 1; i >= 0; i--) {
+            const el = document.getElementById(navItems[i].id);
+            if (el && el.offsetTop <= scrollPos) {
+              matched = navItems[i].id;
+              break;
+            }
+          }
 
-      for (const item of sectionElements) {
-        if (item.top <= scrollPos) {
-          setActiveSection(item.id);
-          return;
-        }
-      }
+          if (window.scrollY < 200) {
+            matched = '';
+          }
 
-      if (window.scrollY < 200) {
-        setActiveSection('');
+          setActiveSection((prev) => (prev !== matched ? matched : prev));
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

@@ -1,11 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './IntroAnimation.module.css';
 
 export default function IntroAnimation({ onComplete }) {
   const [phase, setPhase] = useState('initial'); // 'initial', 'tagline', 'thisIs', 'done'
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
+    // Safety fallback: guaranteed unblock after 3.6s
+    const safetyTimer = setTimeout(() => {
+      onCompleteRef.current?.();
+    }, 3600);
+
     // Step 1: Smoothly slide tagline in
     const t1 = setTimeout(() => setPhase('tagline'), 250);
 
@@ -18,6 +25,7 @@ export default function IntroAnimation({ onComplete }) {
     }, 2450);
 
     return () => {
+      clearTimeout(safetyTimer);
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
@@ -26,6 +34,9 @@ export default function IntroAnimation({ onComplete }) {
 
   const handleSkip = () => {
     setPhase('done');
+    setTimeout(() => {
+      onCompleteRef.current?.();
+    }, 150);
   };
 
   useEffect(() => {

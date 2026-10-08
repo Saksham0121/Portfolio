@@ -54,9 +54,7 @@
 /* ── Achievement Card ── */
 .card {
   height: 100%;
-  background: rgba(12, 12, 12, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #0a0b0e;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 30px 28px;

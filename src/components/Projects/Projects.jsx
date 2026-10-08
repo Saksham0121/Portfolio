@@ -3,25 +3,25 @@ import { Github, ArrowUpRight } from 'lucide-react';
 import styles from './Projects.module.css';
 
 const projects = [
-  {
-    number: '01',
-    name: 'Parakh',
-    subtitle: 'Enterprise Algorithmic Trading Platform',
-    description: 'High-throughput event-driven trading and backtesting platform built as a 9-service NestJS microservices architecture. Processes real-time market streams through Kafka, calculates technical indicators with TimescaleDB, combines technical and fundamental trading conditions, and delivers real-time alerts with horizontally scalable infrastructure, fault tolerance, and distributed observability.',
-    tags: ['NestJS', 'TypeScript', 'Kafka', 'TimescaleDB', 'PostgreSQL', 'Redis', 'Docker', 'OpenTelemetry'],
-    highlights: ['9 Microservices', 'Event-Driven Architecture', 'Real-Time Market Data', 'High-Throughput Pipelines', 'Distributed Tracing'],
-    link: 'https://github.com/Saksham0121/Parakh',
-    year: '2026',
-  },
-  {
-    number: '02',
-    name: 'Askra AI',
-    subtitle: '7-Layer Agentic RAG System',
-    description: 'Enterprise AI platform built around a 7-layer agentic pipeline for grounded knowledge retrieval and multimodal document understanding. Combines query rewriting, FAISS + BM25 hybrid retrieval, cross-encoder reranking, LLM-as-judge validation, reflection-based self-correction, and local OCR to deliver citation-backed responses with confidence scoring.',
-    tags: ['FastAPI', 'React', 'LangChain', 'Groq', 'FAISS', 'BM25', 'MongoDB', 'SSE'],
-    highlights: ['7-Layer Agentic RAG', 'Hybrid Retrieval + Reranking', 'LLM Self-Correction', 'Local Multimodal OCR', 'RBAC + JWT'],
-    link: 'https://github.com/Saksham0121/AI_knowlege_assistant',
-    year: '2026',
+ {
+  number: '01',
+  name: 'Parakh',
+  subtitle: 'Event-Driven Algorithmic Trading Platform',
+  description: 'Event-driven trading and backtesting platform built as a 9-microservices architecture. Ingests real-time market data through Kafka, calculates technical indicators (SMA, EMA, RSI, MACD) on live ticks into TimescaleDB, and combines technical and fundamental conditions to trigger real-time alerts. Circuit breakers protect against third-party API outages, and OpenTelemetry traces requests across HTTP services. Gateway p95 latency dropped from ~1.5s to 113ms at 100 concurrent users (~1,470 req/s, k6) using PgBouncer pooling, HTTP keep-alive, and short-TTL Redis caching across 3 Nginx-balanced replicas.',
+  tags: ['NestJS', 'TypeScript', 'Kafka', 'TimescaleDB', 'PostgreSQL', 'Redis', 'Docker', 'OpenTelemetry'],
+  highlights: ['9 Microservices', 'Event-Driven Architecture', 'p95 113ms at 100 Users', 'Circuit Breakers', 'Distributed Tracing'],
+  link: 'https://github.com/Saksham0121/Parakh',
+  year: '2026',
+},
+{
+  number: '02',
+  name: 'Askra AI',
+  subtitle: '7-Layer Agentic RAG System',
+  description: 'Agentic RAG platform for private-document Q&A built around a 7-layer pipeline. Combines query rewriting, concurrent FAISS + BM25 hybrid retrieval with cross-encoder reranking, LLM-as-judge validation, reflection-based self-correction, and local OCR for scanned PDFs, returning citation-backed answers with confidence scores. Raised answer accuracy from 68% to 92% over a baseline RAG on a ground-truth QA benchmark (LLM-judged), with 354ms P95 TTFT on retrieval, ~100ms TTFT streaming from Groq over SSE, JWT auth, and department-level RBAC.',
+  tags: ['FastAPI', 'React', 'LangChain', 'Groq', 'FAISS', 'BM25', 'MongoDB', 'SSE'],
+  highlights: ['68% → 92% Accuracy', 'Hybrid Retrieval + Reranking', 'LLM Self-Correction', 'Local Multimodal OCR', 'RBAC + JWT'],
+  link: 'https://github.com/Saksham0121/AI_knowlege_assistant',
+  year: '2026',
 },
   {
     number: '03',

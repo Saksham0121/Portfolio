@@ -13,10 +13,9 @@ const experiences = [
     location: 'Delhi / NCR, India',
     logo: drdoLogo,
     points: [
-      'Engineered secure, locally hosted Advanced RAG systems using LLMs, vector databases and embedding models, achieved 92.5% retrieval accuracy on confidential knowledge base benchmarks while reducing query latency by ~40%',
-      'Developed Hybrid and Hierarchical RAG architectures with semantic search, keyword retrieval and reranking to improve retrieval',
-      'Built scalable document processing pipelines handling 11,000+ pages including chunking, embedding generation, indexing and reduced hallucinations through multistage retrieval',
-      'Currently being used by DRDO centers nationwide',
+      'Engineered a secure, locally hosted Advanced RAG system on Linux for a confidential knowledge base, combining LLMs, vector databases and embedding models to reach 92.5% retrieval accuracy on a 460-question benchmark',
+      'Designed a hybrid retrieval architecture that blends semantic search, keyword retrieval and reranking, cutting query latency by ~25% while keeping answers grounded in source documents',
+      'Created scalable document processing pipelines for 11,000+ pages, covering chunking, embedding generation, indexing and structured logging, with multi-stage retrieval to improve answer grounding',
     ],
     tags: ['Advanced RAG', 'LLMs', 'Vector DBs', 'Python', 'FastAPI', 'Semantic Search'],
   },
