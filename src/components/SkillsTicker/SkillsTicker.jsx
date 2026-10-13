@@ -2,13 +2,15 @@ import { motion } from 'framer-motion';
 import styles from './SkillsTicker.module.css';
 
 const row1 = [
-  'Python', 'C++', 'Java', 'JavaScript', 'TypeScript',
+  'Java 21', 'Spring Boot 3', 'Spring Data JPA', 'Hibernate',
+  'Python', 'C++', 'JavaScript', 'TypeScript',
   'React.js', 'Next.js', 'Node.js', 'Express.js', 'REST API',
   'RAG', 'LLMs', 'LangChain', 'Prompt Engineering', 'ChromaDB',
 ];
 
 const row2 = [
-  'AWS (ECR / ECS / EC2)', 'Docker', 'Git', 'CI/CD Pipelines',
+  'Apache Kafka', 'Redis', 'TimescaleDB', 'OpenTelemetry', 'k6',
+  'AWS', 'Docker', 'Git', 'CI/CD Pipelines',
   'Vector Search', 'Semantic Search', 'Embedding Models', 'Vector Databases',
   'PostgreSQL', 'MongoDB', 'MySQL', 'System Design', 'Data Structures & Algorithms',
   'Postman', 'Power BI', 'Figma',

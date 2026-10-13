@@ -41,13 +41,15 @@ export const stats = [
 
 export const skills = {
   languages: [
+    { name: "Java (Java 21)", level: 90, color: "#e0568a" },
     { name: "C++", level: 88, color: "#9b59b6" },
     { name: "Python", level: 92, color: "#4ecdc4" },
-    { name: "Java", level: 82, color: "#e0568a" },
     { name: "JavaScript", level: 86, color: "#d4a853" },
     { name: "TypeScript", level: 84, color: "#6366f1" },
   ],
   web: [
+    { name: "Spring Boot 3", level: 90, color: "#22c55e" },
+    { name: "Hibernate / JPA", level: 86, color: "#e0568a" },
     { name: "React.js", level: 88, color: "#4ecdc4" },
     { name: "Next.js", level: 82, color: "#d4a853" },
     { name: "Node.js", level: 85, color: "#9b59b6" },
@@ -61,20 +63,22 @@ export const skills = {
     { name: "Vector Search", level: 89, color: "#6366f1" },
   ],
   cloudData: [
+    { name: "Apache Kafka", level: 86, color: "#e0568a" },
     { name: "AWS (ECR/ECS/EC2)", level: 82, color: "#f97316" },
     { name: "Docker & CI/CD", level: 85, color: "#06b6d4" },
-    { name: "PostgreSQL / MySQL", level: 86, color: "#4ecdc4" },
-    { name: "MongoDB", level: 88, color: "#d4a853" },
+    { name: "PostgreSQL / Redis", level: 88, color: "#4ecdc4" },
+    { name: "MongoDB / MySQL", level: 86, color: "#d4a853" },
   ],
 };
 
 export const techStack = [
-  { category: "Languages", items: ["C++", "Python", "Java", "JavaScript", "TypeScript"] },
-  { category: "Web & Backend", items: ["React.js", "Next.js", "Node.js", "Express.js", "REST API"] },
-  { category: "Databases", items: ["MySQL", "MongoDB", "PostgreSQL", "Vector Databases"] },
+  { category: "Languages", items: ["Java", "C++", "Python", "JavaScript", "TypeScript"] },
+  { category: "Frontend", items: ["React.js", "Next.js", "Tailwind CSS", "HTML5 / CSS3"] },
+  { category: "Backend", items: ["Spring Boot", "Hibernate", "Node.js", "Express.js", "REST API"] },
+  { category: "Databases", items: ["PostgreSQL", "Redis", "MySQL", "MongoDB", "Vector Databases"] },
   { category: "Gen AI", items: ["RAG", "LLMs", "LangChain", "Vector Search"] },
   { category: "Cloud & DevOps", items: ["AWS (ECR, ECS, EC2, ALB)", "Docker", "Git", "CI/CD pipelines"] },
-  { category: "System Architecture", items: ["Scalable Architecture", "High Performance", "Reliability & Resilience", "Observability"] },
+  { category: "System Architecture", items: ["Apache Kafka", "OpenTelemetry", "Nginx", "k6", "Grafana", "Microservices", "Circuit Breakers", "High Concurrency"] },
 ];
 
 export const experience = [

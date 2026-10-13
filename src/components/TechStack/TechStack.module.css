@@ -1,31 +1,31 @@
 /* ═══════════════════════════════════════════
-   Tech Stack — Categorized Grid Layout
+   Tech Stack — Sleek Bento Grid (Theme Black Shade)
    ═══════════════════════════════════════════ */
 
 .section {
   position: relative;
   background: transparent;
-  padding: 100px 6vw 100px;
+  padding: 90px 6vw 100px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 28px 28px;
-  scroll-margin-top: 100px;
+  scroll-margin-top: 90px;
 }
 
-/* ── Header ── */
+/* ── Section Header ── */
 .header {
   position: relative;
   z-index: 10;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
 }
 
 .title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: #ffffff;
   line-height: 1;
 }
 
@@ -35,169 +35,346 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.45);
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
-/* ── 3-Column Cards Grid ── */
+/* ── 3-Column Main Grid ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1320px;
+  gap: 20px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
-/* ── Category Card ── */
+/* ── Bento Category Card (Black Shade Theme) ── */
 .card {
-  background: #0a0b0e;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #090a0d;
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 20px;
-  padding: 28px 24px;
+  padding: 22px 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
-.cardSpan2 {
-  grid-column: span 2;
+/* ── Card Header (White Dot + Crisp White Title) ── */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 .cardTitle {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 18px;
+  font-size: 15.5px;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.01em;
   margin: 0;
 }
 
-/* ── Tiles Grid inside Card ── */
-.tilesGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.tilesGrid3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.tilesGrid4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-/* ── Inner Tech Tile ── */
-.tile {
+/* ── Inner Bento Tile (Universal Dark Shade) ── */
+.bentoTile {
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  padding: 16px 12px;
+  border-radius: 14px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-height: 92px;
+  gap: 6px;
+  padding: 10px 8px;
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
 }
 
-.tileFullWidth {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  min-height: 54px;
-  padding: 12px 16px;
-  gap: 12px;
-}
-
-.tile:hover {
+.bentoTile:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+}
+
+/* Pinned Monochrome Dot at Top-Right */
+.tileDot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bentoTile:hover .tileDot {
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
 .tileIcon {
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
 }
 
-.tileIconSvg {
-  width: 26px;
-  height: 26px;
-  color: #ffffff;
-  stroke-width: 1.85;
-  filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.12));
+.tileLarge .tileIcon {
+  width: 34px;
+  height: 34px;
 }
 
 .tileName {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-size: 10px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  line-height: 1.25;
+  line-height: 1.15;
 }
 
-.tileSubtitle {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.45);
-  text-align: center;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+/* ═══════════════════════════════════════════
+   Bento Layouts for Each Specific Category
+   ═══════════════════════════════════════════ */
+
+/* 1. Languages (3 top, 2 large bottom) */
+.bentoLanguages {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 66px 90px;
+  gap: 10px;
+  min-height: 166px;
 }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
+.tilePython {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.tileTypeScript {
+  grid-column: 3 / span 2;
+  grid-row: 1;
+}
+
+.tileJavaScript {
+  grid-column: 5 / span 2;
+  grid-row: 1;
+}
+
+.tileCpp {
+  grid-column: 1 / span 3;
+  grid-row: 2;
+}
+
+.tileJava {
+  grid-column: 4 / span 3;
+  grid-row: 2;
+}
+
+/* 2. Frontend (React big left, Tailwind/HTML/Next right, Redux/CSS bottom) */
+.bentoFrontend {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr;
+  grid-template-rows: 48px 48px 48px;
+  gap: 10px;
+  min-height: 166px;
+}
+
+.tileReact {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.tileTailwind {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.tileHtml {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.tileNext {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+.tileRedux {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.tileCss {
+  grid-column: 2 / span 2;
+  grid-row: 3;
+}
+
+/* 3. Backend (Spring Boot big left, Node/Express right, Hibernate/REST bottom) */
+.bentoBackend {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr;
+  grid-template-rows: 48px 48px 48px;
+  gap: 10px;
+  min-height: 166px;
+}
+
+.tileSpringBoot {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.tileNode {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.tileExpress {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.tileHibernate {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+.tileRestApi {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.tileKafka {
+  grid-column: 2 / span 2;
+  grid-row: 3;
+}
+
+/* 4. Databases (MongoDB tall left, Redis/MySQL middle, PostgreSQL tall right) */
+.bentoDatabases {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 78px 78px;
+  gap: 10px;
+  min-height: 166px;
+}
+
+.tileMongo {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.tileRedis {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.tileMysql {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.tilePostgres {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+/* 5. Cloud & DevOps (Docker/AWS left, Git tall middle, CI/CD tall right) */
+.bentoCloud {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  grid-template-rows: 78px 78px;
+  gap: 10px;
+  min-height: 166px;
+}
+
+.tileDocker {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.tileAws {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.tileGitCloud {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.tileCicd {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+/* 6. Tools (OpenTelemetry large left, k6/GitHub top-right, Postman bottom-right) */
+.bentoTools {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr;
+  grid-template-rows: 78px 78px;
+  gap: 10px;
+  min-height: 166px;
+}
+
+.tileOtel {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.tileK6 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.tileGithub {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.tilePostman {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+/* ── Responsive Breakpoints ── */
+@media (max-width: 1080px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .cardSpan2 {
-    grid-column: span 2;
-  }
-
-  .tilesGrid4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .tilesGrid3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
-@media (max-width: 768px) {
-  .tilesGrid3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .grid {
     grid-template-columns: 1fr;
   }
 
-  .cardSpan2 {
-    grid-column: span 1;
-  }
-
-  .tilesGrid,
-  .tilesGrid3,
-  .tilesGrid4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .section {
-    padding: 70px 5vw 70px;
+    padding: 60px 5vw 70px;
+  }
+
+  .bentoLanguages,
+  .bentoFrontend,
+  .bentoBackend,
+  .bentoDatabases,
+  .bentoCloud,
+  .bentoTools {
+    min-height: auto;
   }
 }

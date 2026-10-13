@@ -13,7 +13,7 @@ const floatingTags = [
   { text: 'Algorithms', icon: '🧠', posClass: styles.tag7, delay: 0.6 },
   { text: 'C++', icon: '⚙️', posClass: styles.tag8, delay: 1.4 },
   { text: 'JAVA', icon: '☕', posClass: styles.tag9, delay: 2.2 },
-  { text: 'Springboot', icon: '🍃', posClass: styles.tag10, delay: 1.0 },
+  { text: 'Spring Boot', icon: '🍃', posClass: styles.tag10, delay: 1.0 },
   { text: 'MERN Stack', icon: '🚀', posClass: styles.tag11, delay: 1.8 },
 ];
 
