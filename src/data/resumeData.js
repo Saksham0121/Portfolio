@@ -21,8 +21,7 @@ export const profile = {
   ],
   location: "Noida, India",
   phone: "+91-7906552119",
-  resumeUrl: "#",
-};
+  resumeUrl: import.meta.env.VITE_RESUME_URL || "https://drive.google.com/file/d/1_2IQO219kdVoseXRGhmjuGSQTLDXXXBo/view?usp=sharing",};
 
 export const education = {
   degree: "B.Tech — Computer Science & Engineering",

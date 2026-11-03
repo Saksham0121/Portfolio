@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { ArrowDown, Download } from 'lucide-react';
 import photo from '../../assets/coverphoto.jpg';
+import { profile } from '../../data/resumeData';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -62,7 +63,7 @@ export default function Hero() {
               <ArrowDown size={16} />
             </a>
             <a
-              href="/resume.pdf"
+              href={profile.resumeUrl}
               download="Saksham_Sahu_Resume.pdf"
               className={styles.secondaryBtn}
               target="_blank"

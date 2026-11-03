@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import speechCutout from '../../assets/speechnobg.png';
 import resumeImg from '../../assets/Resume photo.png';
+import { profile } from '../../data/resumeData';
 import styles from './About.module.css';
 
 const floatingTags = [
@@ -93,7 +94,7 @@ export default function About() {
               <img src={resumeImg} alt="Saksham Sahu Resume" className={styles.resumeImage} />
               <div className={styles.paperOverlay}>
                 <a
-                  href={resumeImg}
+                  href={profile.resumeUrl && profile.resumeUrl !== '#' ? profile.resumeUrl : resumeImg}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.downloadBtn}

@@ -20,7 +20,7 @@ const projects = [
   description: 'Agentic RAG platform for private-document Q&A built around a 7-layer pipeline. Combines query rewriting, concurrent FAISS + BM25 hybrid retrieval with cross-encoder reranking, LLM-as-judge validation, reflection-based self-correction, and local OCR for scanned PDFs, returning citation-backed answers with confidence scores. Raised answer accuracy from 68% to 92% over a baseline RAG on a ground-truth QA benchmark (LLM-judged), with 354ms P95 TTFT on retrieval, ~100ms TTFT streaming from Groq over SSE, JWT auth, and department-level RBAC.',
   tags: ['FastAPI', 'React', 'LangChain', 'Groq', 'FAISS', 'BM25', 'MongoDB', 'SSE'],
   highlights: ['68% → 92% Accuracy', 'Hybrid Retrieval + Reranking', 'LLM Self-Correction', 'Local Multimodal OCR', 'RBAC + JWT'],
-  link: 'https://github.com/Saksham0121/AI_knowlege_assistant',
+  link: 'https://github.com/Saksham0121/Askra',
   year: '2026',
 },
   {
